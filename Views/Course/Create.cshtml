@@ -1,0 +1,98 @@
+﻿@model SyllabusGenerator.Models.Course
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<div class="container-fluid">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="@( Url.Action("Index", "Dashboard") )">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Add Course</li>
+        <li class="breadcrumb-item">
+            <a href="@( Url.Action("Index", "Course") )">Courses</a>
+        </li>
+
+    </ol>
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Add New Course
+        </div>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("Create", "Course", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <h3 style="color:red;">@TempData["msg"]</h3>
+            @Html.HiddenFor(model => model.CourseId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.HiddenFor(model => model.MarksId, new { htmlAttributes = new { @class = "form-control" } })
+
+
+
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <div class="col-md-10">
+                        <h6>Course Code</h6>
+                        @Html.EditorFor(model => model.CourseCode, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CourseCode, "Example(CSE-1101/CSE-1102)", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        <h6>Course Title</h6>
+                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    @if (ViewBag.TypeList != null)
+                    {
+                        <div class="col-md-10">
+                            <h6>Select Course Type</h6>
+                            @Html.DropDownListFor(model => model.CourseTypeId, ViewBag.TypeList as SelectList, "-- Select Course Type ---", new { @class = "form-control" })
+                        </div>
+                    }
+                </div>
+            </div>
+
+
+
+
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        <h6>Course Credit</h6>
+                        @Html.EditorFor(model => model.Credit, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                        @Html.ValidationMessageFor(model => model.Credit, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-6">
+                <div class="col-md-10">
+                    <a onclick="window.history.back();" class="btn btn-danger">Cancel</a>
+                    <input type="submit" class="btn btn-success" value="Next" />
+                    
+
+                </div>
+            </div>
+        }
+    </div>
+</div>

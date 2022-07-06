@@ -1,0 +1,120 @@
+﻿@model IEnumerable<SyllabusGenerator.Models.LearningPlan>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@foreach (var item in Model)
+{
+<h5>
+    Subject Code: @item.CourseDetails.FirstOrDefault(x => x.CourseId == (int)Session["courseId"]).ToString()
+    <br />
+    Subject Name: 
+    <br />
+    Credit: 
+    <br />
+    1.Course Summary:<br />
+    @item.CourseDetails.
+    <br />
+    2.Course Objectives:<br />
+    @item.CourseId
+    <br />
+    3.Course Learning Outcomes:<br />
+    @item.CLO.Outcomes
+    <br />
+    <br />
+    B.Lesson Plan:
+</h5>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Week)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Topics)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LearningOutcome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssessmentStrategie.Strategies)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CLO.Outcomes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TeachingStrategie.Strategies)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseId)
+        </th>
+        
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Week)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Topics)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LearningOutcome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssessmentStrategie.Strategies)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CLO.Outcomes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeachingStrategie.Strategies)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseId)
+            </td>
+            
+        </tr>
+    }
+
+</table>
+<h5>
+    Part C- Assessment and Evaluations
+    
+</h5>
+<br />
+<h6>
+    Assessment Procedures
+</h6>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AssessmentStrategie.Strategies)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssessmentStrategie.Description)
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssessmentStrategie.Strategies)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssessmentStrategie.Description)
+            </td>
+        </tr>
+    }
+
+</table>

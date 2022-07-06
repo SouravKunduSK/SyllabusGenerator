@@ -1,0 +1,80 @@
+﻿@model List<SyllabusGenerator.Models.AssessmentStrategie>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+
+
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="@( Url.Action("Index", "Dashboard") )">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Assessment Strategies</li>
+
+    </ol>
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-book-open"></i>
+            Assessment Strategies Details
+            <a href="@( Url.Action("Create", "AssessmentStrategies") )" class="btn btn-info pull-right fa fa-plus">Add New Strategies</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-condensed table-hover table-bordered table-striped table" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+
+
+                        <tr>
+
+                            <th>Serial No.</th>
+                            <th>Assessment</th>
+                            <th>Description</th>
+
+
+                            <th>Action</th>
+
+                        </tr>
+
+
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+
+                            <tr>
+                                <td>@(Model.IndexOf(item)+1)</td>
+
+                                <td>@item.Strategies</td>
+                                <td>@item.Description</td>
+
+
+
+                                <td>
+                                    <a href="@Url.Action("Edit", "CourseObjectives", new { id = item.AssessmentStrategieId})" class="btn btn-info">Edit</a>
+                                    <a href="@Url.Action("Delete", "CourseObjectives", new { id = item.AssessmentStrategieId})" class="btn btn-danger">Delete</a>
+                                </td>
+
+
+
+                            </tr>
+
+
+
+
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+

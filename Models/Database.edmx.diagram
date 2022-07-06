@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e2cfd97347914c34bf8b5bf999e3316f" Name="Diagram1">
+        <EntityTypeShape EntityType="SyllabusModel.AssessmentStrategie" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SyllabusModel.Book" Width="1.5" PointX="0.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SyllabusModel.BookType" Width="1.5" PointX="1.5" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="SyllabusModel.CIE" Width="1.5" PointX="0.75" PointY="32.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SyllabusModel.CLO" Width="1.5" PointX="0.75" PointY="36" IsExpanded="true" />
+        <EntityTypeShape EntityType="SyllabusModel.Course" Width="1.5" PointX="1.5" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SyllabusModel.CourseDetail" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SyllabusModel.CourseObjective" Width="1.5" PointX="0.75" PointY="39" IsExpanded="true" />
+        <EntityTypeShape EntityType="SyllabusModel.CourseType" Width="1.5" PointX="1.5" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SyllabusModel.LearningPlan" Width="1.5" PointX="6" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SyllabusModel.LPAssessmentStrategie" Width="1.5" PointX="8.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SyllabusModel.LPCLO" Width="1.5" PointX="8.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SyllabusModel.LPTeachingStrategie" Width="1.5" PointX="8.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SyllabusModel.Mark" Width="1.5" PointX="1.5" PointY="29" IsExpanded="true" />
+        <EntityTypeShape EntityType="SyllabusModel.SEE" Width="1.5" PointX="0.75" PointY="41.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SyllabusModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SyllabusModel.TeachingStrategie" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SyllabusModel.Week" Width="1.5" PointX="3.75" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="SyllabusModel.FK__CourseDet__Asses__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="SyllabusModel.FK__LearningP__Asses__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="SyllabusModel.FK__LPAssessm__Asses__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="SyllabusModel.FK__Book__BookTypeId__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="SyllabusModel.FK__Book__CourseId__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="SyllabusModel.FK__CourseDet__BookI__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="SyllabusModel.FK__CIE__CourseId__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="SyllabusModel.FK__CourseDet__CIEId__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="SyllabusModel.FK__CLO__CourseId__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="SyllabusModel.FK__CourseDet__CLOId__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="SyllabusModel.FK__LearningP__CLOId__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="SyllabusModel.FK__LPCLO__CLOId__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="SyllabusModel.FK__Course__CourseTy__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="SyllabusModel.FK__Course__MarksId__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="SyllabusModel.FK__CourseDet__Cours__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="SyllabusModel.FK__CourseObj__Cours__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="SyllabusModel.FK__SEE__CourseId__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="SyllabusModel.FK__CourseDet__Cours__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="SyllabusModel.FK__CourseDet__PlanI__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="SyllabusModel.FK__CourseDet__SEEId__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="SyllabusModel.FK__CourseDet__Teach__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="SyllabusModel.FK__Marks__CourseTyp__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="SyllabusModel.FK__LearningP__Teach__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="SyllabusModel.FK__LearningP__WeekI__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="SyllabusModel.FK__LPAssessm__PlanI__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="SyllabusModel.FK__LPCLO__PlanId__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="SyllabusModel.FK__LPTeachin__PlanI__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="SyllabusModel.FK__LPTeachin__Teach__4F7CD00D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

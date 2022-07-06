@@ -1,0 +1,129 @@
+﻿@model SyllabusGenerator.Models.LearningPlan
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<div class="container-fluid">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="@( Url.Action("Index", "Dashboard") )">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Add Course</li>
+        <li class="breadcrumb-item">
+            <a href="@( Url.Action("Index", "Course") )">Courses</a>
+        </li>
+
+    </ol>
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Add New Course
+        </div>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("Create", "LessonPlan", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <h3 style="color:red;">@ViewBag.Message</h3>
+            @Html.HiddenFor(model => model.CourseId, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="col-md-6">
+                <div class="form-group">
+                    @if (ViewBag.TimeLineId != null)
+                    {
+                        <div class="col-md-10">
+                            <h6>Select CLO</h6>
+                            @Html.DropDownListFor(model => model.WeekId, ViewBag.TimeLineId as SelectList, "-- Select Timeline ---", new { @class = "form-control" })
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <!--<div class="col-md-6">
+            <div class="form-group">-->
+            @*@Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <!--<div class="col-md-10">
+                    <h6>Timeline</h6>
+
+                </div>
+            </div>
+        </div>-->
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <div class="col-md-10">
+                        <h6>Topics</h6>
+                        @Html.TextAreaFor(model => model.Topics, new { cols = "60", rows = "5", htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Topics, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <div class="col-md-10">
+                        <h6>Learning Outcome</h6>
+                        @Html.EditorFor(model => model.LearningOutcome, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LearningOutcome, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            @*<div class="col-md-6">
+                <div class="form-group">
+                    @if (ViewBag.CLOId != null)
+                    {
+                        <div class="col-md-10">
+                            <h6>Select CLO</h6>
+                            @Html.DropDownListFor(model => model.CLOId, ViewBag.CLOId as MultiSelectList, "-- Select CLO ---", new { @class = "form-control chosen-select" , @multiple= true})
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @if (ViewBag.TeachingStrategieId != null)
+                    {
+                        <div class="col-md-10">
+                            <h6>Select Teaching Strategy</h6>
+                            @Html.DropDownListFor(model => model.TeachingStrategieId, ViewBag.TeachingStrategieId as MultiSelectList, "-- Select Teaching Strategy ---", new { @class = "form-control" })
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    @if (ViewBag.AssessmentStrategieId != null)
+                    {
+                        <div class="col-md-10">
+                            <h6>Select Assessment Strategy</h6>
+                            @Html.DropDownListFor(model => model.AssessmentStrategieId, ViewBag.AssessmentStrategieId as MultiSelectList, "-- Select Assessment Strategy ---", new { @class = "form-control" })
+                        </div>
+                    }
+                </div>
+            </div>*@
+
+
+            <div class="col-md-6">
+                <div class="col-md-10">
+                    <a onclick="window.history.back();" class="btn btn-danger">Cancel</a>
+                    <input type="submit" class="btn btn-success" value="Next" />
+
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    $('.chosen-select').chosen();
+</script>

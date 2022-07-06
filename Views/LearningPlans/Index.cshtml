@@ -1,0 +1,70 @@
+﻿@model IEnumerable<SyllabusGenerator.Models.LearningPlan>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Timeline)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Topics)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LearningOutcome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssessmentStrategie.Strategies)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CLO.Outcomes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TeachingStrategie.Strategies)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Course.CourseCode)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Timeline)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Topics)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LearningOutcome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssessmentStrategie.Strategies)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CLO.Outcomes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TeachingStrategie.Strategies)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Course.CourseCode)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PlanId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PlanId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PlanId })
+        </td>
+    </tr>
+}
+
+</table>
