@@ -12,9 +12,10 @@ namespace SyllabusGenerator.Controllers.Admin
     {
         // GET: LPCLO
         SyllabusMakerEntities db = new SyllabusMakerEntities();
-        public ActionResult Index(int id)
+        public ActionResult Index(int id, int cid)
         {
-            List<CLO> CloList = db.CLOes.ToList();
+            //var cid = (int)Session["subjectId"];
+            List<CLO> CloList = db.CLOes.Where(x => x.Course.CourseId == cid).ToList();
 
             ViewBag.CloList = new SelectList(CloList, "CLOId", "Outcomes");
             var q = db.LPCLOes.Where(x => x.PlanId == id).ToList();
@@ -26,7 +27,7 @@ namespace SyllabusGenerator.Controllers.Admin
         [HttpPost]
         public ActionResult Create(FormCollection frm)
         {
-            List<CLO> CloList = db.CLOes.ToList();
+            List<CLO> CloList = db.CLOes.Where(x=>x.Course.CourseId==(int)Session["subjectId"]).ToList();
 
             ViewBag.CloList = new SelectList(CloList, "CLOId", "Outcomes");
 

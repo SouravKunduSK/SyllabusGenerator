@@ -17,10 +17,9 @@ namespace SyllabusMaker.Controllers.Admin
         public ActionResult Index(int id)
         {
             var q = db.CLOes.Where(x => x.CourseId == id).ToList();
-            var data = db.CLOes.Find(id);
-            var tuple = new Tuple<CLO, List<CLO>>(data, q);
+            
 
-            return View(tuple);
+            return View(q);
         }
 
         [HttpPost]

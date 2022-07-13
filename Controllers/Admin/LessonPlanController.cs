@@ -39,11 +39,11 @@ namespace SyllabusMaker.Controllers.Admin
             ViewBag.CourseList = new SelectList(CourseList, "CourseId", "CourseCode");
             //List<CLO> CloList = db.CLOes.ToList();
             //ViewBag.CLOId = new SelectList(CloList, "CLOId", "Outcomes");
-            ViewBag.CLOId = new MultiSelectList(db.CLOes, "CLOId", "Outcomes");
+            ViewBag.CLOId = new SelectList(db.CLOes, "CLOId", "Outcomes");
             ViewBag.TimeLineId = new SelectList(db.Weeks, "WeekId", "Timeline");
 
-            ViewBag.AssessmentStrategieId = new MultiSelectList(db.AssessmentStrategies, "AssessmentStrategieId", "Strategies");
-            ViewBag.TeachingStrategieId = new MultiSelectList(db.TeachingStrategies, "TeachingStrategieId", "Strategies");
+            ViewBag.AssessmentStrategieId = new SelectList(db.AssessmentStrategies, "AssessmentStrategieId", "Strategies");
+            ViewBag.TeachingStrategieId = new SelectList(db.TeachingStrategies, "TeachingStrategieId", "Strategies");
 
             return View();
         }
@@ -56,7 +56,7 @@ namespace SyllabusMaker.Controllers.Admin
             db.SaveChanges();
             Session["subjectId"] = learningPlan.CourseId;
             Session["planId"] = learningPlan.PlanId;
-            return RedirectToAction("Index", new RouteValueDictionary(new { Controller = "LPCLO", Action = "Index", id = (int)Session["planId"] }));
+            return RedirectToAction("Index", new RouteValueDictionary(new { Controller = "LPCLO", Action = "Index", id = (int)Session["planId"], cid = Session["subjectId"] }));
 
             //return RedirectToAction("Index/"+idd+ "");
             

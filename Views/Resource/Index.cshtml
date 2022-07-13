@@ -27,25 +27,12 @@
             @Html.HiddenFor(model => model.Item1.BookId, new { htmlAttributes = new { @class = "form-control" } })
             @*@Html.HiddenFor(model => model.BookTypeId, new { htmlAttributes = new { @class = "form-control" } })*@
 
-
-
-
-
-
-
-
-
-
-
-
-
             <div class="col-md-6">
                 <div class="form-group">
 
                     <div class="col-md-10">
                         <h6>Book Name</h6>
-                        <label for="obj">Book Name:</label>
-                        <input type="text" id="obj" name="obj">
+                        <textarea rows="2" cols="60" name="obj"></textarea>
                     </div>
                 </div>
             </div>
@@ -61,33 +48,19 @@
                     }
                 </div>
             </div>
-
-
-
-
-
-
-
-
             <div class="col-md-6">
                 <div class="col-md-10">
-                    <a onclick="window.history.back();" class="btn btn-danger">Cancel</a>
+                    <a href="@Url.Action("Index", "Course")" class="pull-right btn btn-success">Done</a>
                     <input type="submit" class="btn btn-success" value="Save" />
-
                 </div>
             </div>
         }
     </div>
 
-    <br />
-    <br />
-    <a href="@Url.Action("Index", "Course")" class="btn btn-success">Done</a>
-
     <div class="card mb-3">
         <div class="card-header">
             <i class="fas fa-book-open"></i>
             All Course Details
-            <a href="@( Url.Action("Create", "Resource") )" class="btn btn-info pull-right fa fa-plus">Add New Course</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">

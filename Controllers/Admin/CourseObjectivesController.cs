@@ -15,10 +15,10 @@ namespace SyllabusMaker.Controllers.Admin
         public ActionResult Index(int id)
         {
             var q = db.CourseObjectives.Where(x => x.CourseId == id).ToList();
-            var data = db.CourseObjectives.Find(id);
-            var tuple = new Tuple<CourseObjective, List<CourseObjective>>(data,q);
-            
-            return View(tuple);
+            //var data = db.CourseObjectives.ToList().FirstOrDefault(x => x.CourseId == id);
+            //var tuple = new Tuple<CourseObjective, List<CourseObjective>>(data,q);
+
+            return View(q);
         }
 
    
