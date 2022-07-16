@@ -22,6 +22,7 @@
             Add New Course
         </div>
     </div>
+    <h3>@ViewBag.Message</h3>
     <div class="card-body">
         @using (Html.BeginForm("Create", "Course", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {

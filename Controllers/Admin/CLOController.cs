@@ -15,7 +15,9 @@ namespace SyllabusMaker.Controllers.Admin
 
 
         public ActionResult Index(int?id)
+
         {
+            Session["subjectId"] = id;
             var q = db.CLOes.Where(x => x.CourseId == id).ToList();
             
 

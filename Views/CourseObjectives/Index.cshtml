@@ -1,7 +1,6 @@
-﻿@*@using SyllabusGenerator.Models;
-    @model Tuple<CourseObjective, List<CourseObjective>>*@
+﻿@using SyllabusGenerator.Models;
+@model Tuple<CourseObjective, List<CourseObjective>>
 
-@model List<SyllabusGenerator.Models.CourseObjective>
 
 
 @{
@@ -25,16 +24,14 @@
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @*<h3 style="color:red;">@TempData["msg"]</h3>*@
-
+            @Html.HiddenFor(model => model.Item1.CourseObjectiveId, new { htmlAttributes = new { @class = "form-control" } })
 
             <div class="col-md-6">
                 <div class="form-group">
 
                     <div class="col-md-10">
                         <h6>Course Objective</h6>
-                        @*@Html.TextArea("Objective", "", new { cols = "60", rows = "5", htmlAttributes = new { @class = "form-control " } })*@
-                    <textarea rows="5" cols="60" name="obj"></textarea>
+                        <textarea rows="5" cols="60" name="obj"></textarea>
                     </div>
                 </div>
             </div>
@@ -79,12 +76,12 @@
                         </thead>
 
                         <tbody>
-                            @foreach (var item in Model)
+                            @foreach (var item in Model.Item2)
                             {
 
 
                                 <tr>
-                                    <td>@(Model.IndexOf(item)+1)</td>
+                                    <td>@(Model.Item2.IndexOf(item)+1)</td>
 
                                     <td>@item.Course.CourseCode</td>
                                     <td>@item.Course.Title</td>
@@ -92,9 +89,9 @@
 
 
                                     @*<td>
-                                        <a href="@Url.Action("Edit", "CourseObjectives", new { id = item.CourseObjectiveId})" class="btn btn-info">Edit</a>
-                                        <a href="@Url.Action("Delete", "CourseObjectives", new { id = item.CourseObjectiveId})" class="btn btn-danger">Delete</a>
-                                    </td>*@
+                                            <a href="@Url.Action("Edit", "CourseObjectives", new { id = item.CourseObjectiveId})" class="btn btn-info">Edit</a>
+                                            <a href="@Url.Action("Delete", "CourseObjectives", new { id = item.CourseObjectiveId})" class="btn btn-danger">Delete</a>
+                                        </td>*@
 
                                 </tr>
 
@@ -111,9 +108,9 @@
 
     </div>
 
-    
 
-   
+
+
 
 </div>
 

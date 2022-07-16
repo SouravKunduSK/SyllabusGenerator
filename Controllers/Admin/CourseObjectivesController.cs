@@ -14,11 +14,12 @@ namespace SyllabusMaker.Controllers.Admin
         // GET: CourseObjectives
         public ActionResult Index(int id)
         {
+            Session["subjectId"] = id;
             var q = db.CourseObjectives.Where(x => x.CourseId == id).ToList();
-            //var data = db.CourseObjectives.ToList().FirstOrDefault(x => x.CourseId == id);
-            //var tuple = new Tuple<CourseObjective, List<CourseObjective>>(data,q);
+            var data = db.CourseObjectives.Find(id);
+            var tuple = new Tuple<CourseObjective, List<CourseObjective>>(data, q);
 
-            return View(q);
+            return View(tuple);
         }
 
    

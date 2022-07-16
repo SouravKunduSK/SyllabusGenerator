@@ -28,10 +28,17 @@ namespace SyllabusMaker.Controllers.Admin
         public ActionResult Index(int?id)
 
         {
+
+
+            var p = db.LearningPlans.Find(id);
+            var ci = db.LearningPlans.Where(x => x.CourseId == id).ToList();
+            var pi = ci.Where(x => x.PlanId == p.PlanId).ToList();
+            ViewBag.pi = pi;
+            ViewBag.ci = ci;
             LessonPlan lp = new LessonPlan();
             var q = db.LessonPlans.Where(x => x.CourseId == id).ToList();
             Session["courseId"] = id;
-            return View(q);
+            return View(pi);
         }
 
         public ActionResult Create()
