@@ -1866,6 +1866,7 @@
     <Content Include="Views\LPCLO\Index.cshtml" />
     <Content Include="Views\LPA\Index.cshtml" />
     <Content Include="Views\LPTS\Index.cshtml" />
+    <Content Include="Views\GS\DetailSyllabus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

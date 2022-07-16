@@ -1,4 +1,11 @@
-﻿<div class="container-fluid">
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid">
     <h2>Syllabus</h2>
     @{ foreach (var item in (List<SyllabusGenerator.Models.Course>)@ViewBag.courseDetail)
         {
@@ -47,15 +54,12 @@
 
 
     <div class="card mb-3">
-        <div class="card-header">
-            <i class="fas fa-book-open"></i>
-            Detail Learning Plan
-
-        </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-condensed table-hover table-bordered table-striped table" id="dataTable" width="100%" cellspacing="0">
                     <thead>
+
+
                         <tr>
 
                             <th>Timeline</th>
@@ -66,32 +70,62 @@
 
                             <th>Teaching Strategies</th>
                             <th>Assessment Strategies</th>
+
+
                         </tr>
 
 
                     </thead>
 
                     <tbody>
-                        @{ foreach (var item in (List<SyllabusGenerator.Models.LessonPlan>)@ViewBag.lesonPlans)
+                        @{ foreach (var item in (List<SyllabusGenerator.Models.LearningPlan>)@ViewBag.ci)
                             {
+
+
+
+
                                 <tr>
-                                    <td>@item.Timeline</td>
+                                    <td>@item.Week.Timeline</td>
 
 
                                     <td>@item.Topics</td>
                                     <td>@item.LearningOutcome </td>
-                                    <td>@item.Outcomes</td>
-                                    <td>@item.Teaching</td>
-                                    <td>@item.Assessment</td>
+                                    <td>
+                                        @foreach (var e in @item.LPCLOes.Where(x => x.PlanId == item.PlanId).ToList())
+                                        {
+                                            @e.CLO.Outcomes<br />
+                                        }
+
+                                    </td>
+
+                                    <td>
+                                        @foreach (var e in @item.LPAssessmentStrategies.Where(x => x.PlanId == item.PlanId).ToList())
+                                        {
+                                            @e.AssessmentStrategie.Strategies<br />
+                                        }
+
+                                    </td>
+
+                                    <td>
+                                        @foreach (var e in @item.LPTeachingStrategies.Where(x => x.PlanId == item.PlanId).ToList())
+                                        {
+                                            @e.TeachingStrategie.Strategies<br />
+                                        }
+
+
+
                                 </tr>
 
+
+
+
                             }
+
                         }
 
                     </tbody>
                 </table>
             </div>
-
         </div>
     </div>
 
@@ -103,10 +137,6 @@
 
 
     <div class="card mb-3">
-        <div class="card-header">
-            <i class="fas fa-book-open"></i>
-            Assessment Strategies Details
-        </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-condensed table-hover table-bordered table-striped table" id="dataTable" width="100%" cellspacing="0">

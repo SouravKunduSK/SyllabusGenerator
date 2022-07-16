@@ -32,6 +32,12 @@ namespace SyllabusMaker.Controllers.Admin
             ViewBag.assessments = db.AssessmentStrategies.ToList();
             ViewBag.textBook = db.Books.Where(x => x.BookType.BookTypeId == 1 && x.CourseId == id).ToList();
             ViewBag.refBook = db.Books.Where(x => x.BookType.BookTypeId == 2 && x.CourseId == id).ToList();
+
+            var p = db.LearningPlans.Find(id);
+            var ci = db.LearningPlans.Where(x => x.CourseId == id).ToList();
+            ViewBag.ci = ci;
+
+
             return View();
         }
 
