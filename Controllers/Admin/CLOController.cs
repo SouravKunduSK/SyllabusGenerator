@@ -14,7 +14,7 @@ namespace SyllabusMaker.Controllers.Admin
         // GET: CLO
 
 
-        public ActionResult Index(int id)
+        public ActionResult Index(int?id)
         {
             var q = db.CLOes.Where(x => x.CourseId == id).ToList();
             
@@ -30,7 +30,7 @@ namespace SyllabusMaker.Controllers.Admin
             c.Outcomes = Convert.ToString(frm["obj"]);
             db.CLOes.Add(c);
             db.SaveChanges();
-            return RedirectToAction("Index", new RouteValueDictionary(new { Controller = "CLO", Action = "Index", id = (int)Session["subjectId"] }));
+            return RedirectToAction("Index", new RouteValueDictionary(new { Controller = "CLO", Action = "Index", id = c.CourseId }));
         }
     }
 }

@@ -14,9 +14,9 @@ namespace SyllabusGenerator.Controllers.Admin
         SyllabusMakerEntities db = new SyllabusMakerEntities();
         public ActionResult Index(int id)
         {
-            List<AssessmentStrategie> AssemntList = db.AssessmentStrategies.ToList();
+            List<AssessmentStrategie> AssesmntList = db.AssessmentStrategies.ToList();
 
-            ViewBag.AssemntList = new SelectList(AssemntList, "AssesmentStrategieId", "Strategies");
+            ViewBag.AssesmntList = new SelectList(AssesmntList, "AssessmentStrategieId", "Strategies");
             var q = db.LPAssessmentStrategies.Where(x => x.PlanId == id).ToList();
             var data = db.LPAssessmentStrategies.Find(id);
             var tuple = new Tuple<LPAssessmentStrategie, List<LPAssessmentStrategie>>(data, q);
@@ -26,14 +26,15 @@ namespace SyllabusGenerator.Controllers.Admin
         [HttpPost]
         public ActionResult Create(FormCollection frm)
         {
-            List<AssessmentStrategie> AssemntList = db.AssessmentStrategies.ToList();
+            List<AssessmentStrategie> AssesmntList = db.AssessmentStrategies.ToList();
 
-            ViewBag.AssemntList = new SelectList(AssemntList, "AssesmentStrategieId", "Strategies");
+            ViewBag.AssesmntList = new SelectList(AssesmntList, "AssessmentStrategieId", "Strategies");
 
             var b = new LPAssessmentStrategie();
             b.CourseId = (int)Session["subjectId"];
-            b.AssessmentStrategieId = Convert.ToInt32(frm["asmntId"]);
+            b.AssessmentStrategieId = Convert.ToInt32(frm["AsmntId"]);
             b.PlanId = (int)Session["planId"];
+            b.Strategies = db.AssessmentStrategies.Find(b.AssessmentStrategieId).Strategies.ToString();
             db.LPAssessmentStrategies.Add(b);
             db.SaveChanges();
             return RedirectToAction("Index", new RouteValueDictionary(new { Controller = "LPA", Action = "Index", id = (int)Session["planId"] }));

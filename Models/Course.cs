@@ -18,27 +18,27 @@ namespace SyllabusGenerator.Models
         public Course()
         {
             this.Books = new HashSet<Book>();
-            this.CIEs = new HashSet<CIE>();
             this.CLOes = new HashSet<CLO>();
             this.CourseDetails = new HashSet<CourseDetail>();
             this.CourseObjectives = new HashSet<CourseObjective>();
-            this.SEEs = new HashSet<SEE>();
+            this.LearningPlans = new HashSet<LearningPlan>();
+            this.LPAssessmentStrategies = new HashSet<LPAssessmentStrategie>();
+            this.LPCLOes = new HashSet<LPCLO>();
+            this.LPTeachingStrategies = new HashSet<LPTeachingStrategie>();
         }
     
         public int CourseId { get; set; }
         public string CourseCode { get; set; }
         public string Title { get; set; }
+        public Nullable<double> Credit { get; set; }
         public Nullable<int> CourseTypeId { get; set; }
         public Nullable<double> TotalCredit { get; set; }
         public Nullable<int> MarksId { get; set; }
         public Nullable<double> TotalMarks { get; set; }
-        public Nullable<double> Credit { get; set; }
         public string Summary { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Book> Books { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CIE> CIEs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CLO> CLOes { get; set; }
         public virtual CourseType CourseType { get; set; }
@@ -48,6 +48,12 @@ namespace SyllabusGenerator.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CourseObjective> CourseObjectives { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SEE> SEEs { get; set; }
+        public virtual ICollection<LearningPlan> LearningPlans { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LPAssessmentStrategie> LPAssessmentStrategies { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LPCLO> LPCLOes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LPTeachingStrategie> LPTeachingStrategies { get; set; }
     }
 }

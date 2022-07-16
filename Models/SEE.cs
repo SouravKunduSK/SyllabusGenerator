@@ -14,19 +14,9 @@ namespace SyllabusGenerator.Models
     
     public partial class SEE
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SEE()
-        {
-            this.CourseDetails = new HashSet<CourseDetail>();
-        }
-    
         public int SEEId { get; set; }
         public string Category { get; set; }
         public string Test { get; set; }
         public Nullable<int> CourseId { get; set; }
-    
-        public virtual Course Course { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CourseDetail> CourseDetails { get; set; }
     }
 }

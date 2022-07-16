@@ -30,6 +30,5 @@ namespace SyllabusGenerator.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Course> Courses { get; set; }
-        public virtual CourseType CourseType { get; set; }
     }
 }

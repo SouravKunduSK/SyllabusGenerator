@@ -1,120 +1,175 @@
-﻿@model IEnumerable<SyllabusGenerator.Models.LearningPlan>
+﻿<div class="container-fluid">
+    <h2>Syllabus</h2>
+    @{ foreach (var item in (List<SyllabusGenerator.Models.Course>)@ViewBag.courseDetail)
+        {
+            <h4 class="text-center">Course Outline: @item.Title</h4>
 
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
-}
+            <p>
+                <h1>Part A - Introduction:</h1>
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-@foreach (var item in Model)
-{
-<h5>
-    Subject Code: @item.CourseDetails.FirstOrDefault(x => x.CourseId == (int)Session["courseId"]).ToString()
-    <br />
-    Subject Name: 
-    <br />
-    Credit: 
-    <br />
-    1.Course Summary:<br />
-    @item.CourseDetails.
-    <br />
-    2.Course Objectives:<br />
-    @item.CourseId
-    <br />
-    3.Course Learning Outcomes:<br />
-    @item.CLO.Outcomes
-    <br />
-    <br />
-    B.Lesson Plan:
-</h5>
-}
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Week)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Topics)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LearningOutcome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AssessmentStrategie.Strategies)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CLO.Outcomes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TeachingStrategie.Strategies)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CourseId)
-        </th>
-        
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Week)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Topics)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LearningOutcome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AssessmentStrategie.Strategies)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CLO.Outcomes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TeachingStrategie.Strategies)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CourseId)
-            </td>
-            
-        </tr>
+            </p>
+            <p>Course Code: @item.CourseCode</p>
+            <p>Credit: @item.Credit</p>
+            <p>Course Summary:</p><br />
+            <p>@item.Summary</p>
+        }
     }
 
-</table>
-<h5>
-    Part C- Assessment and Evaluations
-    
-</h5>
-<br />
-<h6>
-    Assessment Procedures
-</h6>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.AssessmentStrategie.Strategies)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AssessmentStrategie.Description)
-        </th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AssessmentStrategie.Strategies)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AssessmentStrategie.Description)
-            </td>
-        </tr>
+
+    <br />
+    <p>
+        <h3>Course Objectives:</h3>
+    </p>
+    @{ foreach (var item in (List<SyllabusGenerator.Models.CourseObjective>)@ViewBag.objective)
+        {
+            <p>@(((List<SyllabusGenerator.Models.CourseObjective>)@ViewBag.objective).IndexOf(item) + 1). @item.Objectives</p>
+        }
     }
 
-</table>
+
+
+    <br />
+    <p>
+        <h3>Course Learning Outcomes:</h3>
+    </p>
+    @{ foreach (var item in (List<SyllabusGenerator.Models.CLO>)@ViewBag.cloDetail)
+        {
+            <p>@(((List<SyllabusGenerator.Models.CLO>)@ViewBag.cloDetail).IndexOf(item) + 1). @item.Outcomes</p>
+        }
+    }
+    <br />
+    <p>
+        <h1>Part B- Lesson Plan</h1>
+        <h4> Course Details Learning plan</h4>
+    </p>
+
+
+
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-book-open"></i>
+            Detail Learning Plan
+
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-condensed table-hover table-bordered table-striped table" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+
+                            <th>Timeline</th>
+                            <th>Topics/Contents</th>
+
+                            <th>Learning Outcomes</th>
+                            <th>Mapped CLOs</th>
+
+                            <th>Teaching Strategies</th>
+                            <th>Assessment Strategies</th>
+                        </tr>
+
+
+                    </thead>
+
+                    <tbody>
+                        @{ foreach (var item in (List<SyllabusGenerator.Models.LessonPlan>)@ViewBag.lesonPlans)
+                            {
+                                <tr>
+                                    <td>@item.Timeline</td>
+
+
+                                    <td>@item.Topics</td>
+                                    <td>@item.LearningOutcome </td>
+                                    <td>@item.Outcomes</td>
+                                    <td>@item.Teaching</td>
+                                    <td>@item.Assessment</td>
+                                </tr>
+
+                            }
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <br />
+    <p>
+        <h1>Part C- Assessment and Evaluations</h1>
+        <h4>Assessment Procedures</h4>
+    </p>
+
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-book-open"></i>
+            Assessment Strategies Details
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-condensed table-hover table-bordered table-striped table" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+
+                        <tr>
+
+                            <th>Serial No.</th>
+                            <th>Assessment Name</th>
+                            <th>Description</th>
+
+                        </tr>
+
+
+                    </thead>
+
+                    <tbody>
+                        @{ foreach (var item in (List<SyllabusGenerator.Models.AssessmentStrategie>)@ViewBag.assessments)
+                            {
+
+                                <tr>
+                                    <td>@(((List<SyllabusGenerator.Models.AssessmentStrategie>)@ViewBag.assessments).IndexOf(item) + 1)</td>
+
+                                    <td>@item.Strategies</td>
+                                    <td>@item.Description</td>
+
+                                </tr>
+
+
+                            }
+
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <br />
+    <p>
+        <h1>Part D- Resources</h1>
+
+    </p>
+    <h4>Textbooks:</h4>
+    @{ foreach (var item in (List<SyllabusGenerator.Models.Book>)@ViewBag.textBook)
+        {
+            <p>@(((List<SyllabusGenerator.Models.Book>)@ViewBag.textBook).IndexOf(item) + 1). @item.BookName</p>
+        }
+    }
+
+    <h4>References:</h4>
+    @{ foreach (var item in (List<SyllabusGenerator.Models.Book>)@ViewBag.refBook)
+        {
+            <p>@(((List<SyllabusGenerator.Models.Book>)@ViewBag.refBook).IndexOf(item) + 1). @item.BookName</p>
+        }
+    }
+
+
+    <div>
+        <a href="@Url.Action("GeneratePdf", "GS")" class="btn btn-info">Download</a>
+    </div>
+</div>

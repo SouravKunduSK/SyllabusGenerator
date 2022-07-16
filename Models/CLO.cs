@@ -17,20 +17,15 @@ namespace SyllabusGenerator.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CLO()
         {
-            this.CourseDetails = new HashSet<CourseDetail>();
-            this.LearningPlans = new HashSet<LearningPlan>();
             this.LPCLOes = new HashSet<LPCLO>();
         }
     
         public int CLOId { get; set; }
         public string Outcomes { get; set; }
         public Nullable<int> CourseId { get; set; }
+        public string CLOName { get; set; }
     
         public virtual Course Course { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CourseDetail> CourseDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LearningPlan> LearningPlans { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LPCLO> LPCLOes { get; set; }
     }

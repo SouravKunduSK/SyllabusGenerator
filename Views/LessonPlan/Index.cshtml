@@ -1,4 +1,4 @@
-﻿@model List<SyllabusGenerator.Models.LearningPlan>
+﻿@model List<SyllabusGenerator.Models.LessonPlan>
 
 @{
     ViewBag.Title = "Index";
@@ -18,6 +18,11 @@
         <li class="breadcrumb-item active">Learning Plan</li>
 
     </ol>
+
+
+
+
+
     <div class="card mb-3">
         <div class="card-header">
             <i class="fas fa-book-open"></i>
@@ -54,13 +59,23 @@
 
 
                             <tr>
-                                <td>@*@item.Timeline*@</td>
+                                <td>@item.Timeline</td>
+
 
                                 <td>@item.Topics</td>
                                 <td>@item.LearningOutcome </td>
-                                <td>@item.CLO.Outcomes</td>
-                                <td>@item.LPAssessmentStrategies.FirstOrDefault(x => x.PlanId == (int)Session["planId"]).ToString()</td>
-                                <td>@item.LPAssessmentStrategies.FirstOrDefault(x => x.PlanId == (int)Session["planId"]).ToString()</td>
+                                <td>@item.Outcomes</td>
+                                <td>@item.Teaching</td>
+                                <td>@item.Assessment</td>
+
+
+
+
+
+                                @*<td>@item.CLO.Outcomes </td>*@
+                                @*<td>@item.LPTeachingStrategies.FirstOrDefault(x => x.PlanId == (int)Session["planId"]).TeachingStrategie.Strategies</td>
+                                    <td>@item.LPAssessmentStrategies.FirstOrDefault(x => x.PlanId == (int)Session["planId"]).AssessmentStrategie.Strategies</td>*@
+
 
                                 @*<td><a href="@Url.Content(item.ImageURL)" target="_blank"><img src="@Url.Content(item.ImageURL)" style="width:100px; height:67px;" /></a></td>*@
                                 <td>

@@ -14,18 +14,10 @@ namespace SyllabusGenerator.Models
     
     public partial class CourseObjective
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CourseObjective()
-        {
-            this.CourseDetails = new HashSet<CourseDetail>();
-        }
-    
         public int CourseObjectiveId { get; set; }
         public string Objectives { get; set; }
         public Nullable<int> CourseId { get; set; }
     
         public virtual Course Course { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CourseDetail> CourseDetails { get; set; }
     }
 }

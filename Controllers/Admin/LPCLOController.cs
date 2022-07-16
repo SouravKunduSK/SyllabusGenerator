@@ -15,7 +15,7 @@ namespace SyllabusGenerator.Controllers.Admin
         public ActionResult Index(int id, int cid)
         {
             //var cid = (int)Session["subjectId"];
-            List<CLO> CloList = db.CLOes.Where(x => x.Course.CourseId == cid).ToList();
+            List<CLO> CloList = db.CLOes.Where(x => x.CourseId == cid).ToList();
 
             ViewBag.CloList = new SelectList(CloList, "CLOId", "Outcomes");
             var q = db.LPCLOes.Where(x => x.PlanId == id).ToList();
@@ -25,19 +25,19 @@ namespace SyllabusGenerator.Controllers.Admin
             return View(tuple);
         }
         [HttpPost]
-        public ActionResult Create(FormCollection frm)
+        public ActionResult Create(FormCollection frm, int? cid)
         {
-            List<CLO> CloList = db.CLOes.Where(x=>x.Course.CourseId==(int)Session["subjectId"]).ToList();
+            List<CLO> CloList = db.CLOes.Where(x=>x.CourseId== cid).ToList();
 
             ViewBag.CloList = new SelectList(CloList, "CLOId", "Outcomes");
 
             var b = new LPCLO();
             b.CourseId = (int)Session["subjectId"];
-            b.CLOId = Convert.ToInt32(frm["CLOId"]);
+            b.CLOId = Convert.ToInt32(frm["CloId"]);
             b.PlanId = (int)Session["planId"];
             db.LPCLOes.Add(b);
             db.SaveChanges();
-            return RedirectToAction("Index", new RouteValueDictionary(new { Controller = "LPCLO", Action = "Index", id = (int)Session["planId"] }));
+            return RedirectToAction("Index", new RouteValueDictionary(new { Controller = "LPCLO", Action = "Index", id = (int)Session["planId"], cid = (int)Session["subjectId"] }));
         }
     }
 }

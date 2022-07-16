@@ -14,12 +14,6 @@ namespace SyllabusGenerator.Models
     
     public partial class Book
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Book()
-        {
-            this.CourseDetails = new HashSet<CourseDetail>();
-        }
-    
         public int BookId { get; set; }
         public string BookName { get; set; }
         public Nullable<int> BookTypeId { get; set; }
@@ -27,7 +21,5 @@ namespace SyllabusGenerator.Models
     
         public virtual BookType BookType { get; set; }
         public virtual Course Course { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CourseDetail> CourseDetails { get; set; }
     }
 }

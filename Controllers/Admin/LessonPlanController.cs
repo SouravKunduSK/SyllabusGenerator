@@ -26,9 +26,11 @@ namespace SyllabusMaker.Controllers.Admin
 
        
         public ActionResult Index(int?id)
+
         {
+            LessonPlan lp = new LessonPlan();
+            var q = db.LessonPlans.Where(x => x.CourseId == id).ToList();
             Session["courseId"] = id;
-            var q = db.LearningPlans.Where(x=>x.CourseId==id).ToList();
             return View(q);
         }
 
@@ -56,7 +58,7 @@ namespace SyllabusMaker.Controllers.Admin
             db.SaveChanges();
             Session["subjectId"] = learningPlan.CourseId;
             Session["planId"] = learningPlan.PlanId;
-            return RedirectToAction("Index", new RouteValueDictionary(new { Controller = "LPCLO", Action = "Index", id = (int)Session["planId"], cid = Session["subjectId"] }));
+            return RedirectToAction("Index", new RouteValueDictionary(new { Controller = "LPCLO", Action = "Index", id = (int)Session["planId"], cid = (int)Session["courseId"] }));
 
             //return RedirectToAction("Index/"+idd+ "");
             

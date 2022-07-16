@@ -23,7 +23,7 @@
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-           
+
 
 
             <div class="col-md-6">
@@ -31,8 +31,8 @@
                     @if (ViewBag.CloList != null)
                     {
                         <div class="col-md-10">
-                            <h6>Select Mapped CLO</h6>
-                            @Html.DropDownList("CLOId", ViewBag.CloList as SelectList, "-- Select CLO ---", new { @class = "form-control", @name = "cloId" })
+                            <h6>Select Book Type</h6>
+                            @Html.DropDownList("CloId", ViewBag.CloList as SelectList, "-- Select Mapped CLOs ---", new { @class = "form-control", @name = "cloid" })
                         </div>
                     }
                 </div>
