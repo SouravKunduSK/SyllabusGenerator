@@ -28,6 +28,26 @@ namespace SyllabusMaker.Controllers.Admin
             db.SaveChanges();
             return RedirectToAction ("Index","TeachingStrategie");
         }
+        public ActionResult Edit(int Id)
+
+        {
+            var std = db.TeachingStrategies.ToList().Where(s => s.TeachingStrategieId == Id).FirstOrDefault();
+
+            
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Edit(TeachingStrategie std)
+        {
+            var q = db.TeachingStrategies.ToList();
+            var stt = db.TeachingStrategies.ToList().Where(s => s.TeachingStrategieId == std.TeachingStrategieId).FirstOrDefault();
+            q.Remove(stt);
+            q.Add(std);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+
+        }
 
     }
 
