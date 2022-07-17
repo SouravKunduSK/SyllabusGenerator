@@ -18,6 +18,9 @@ namespace SyllabusGenerator.Models
         public CourseType()
         {
             this.Courses = new HashSet<Course>();
+            this.Courses1 = new HashSet<Course>();
+            this.Marks = new HashSet<Mark>();
+            this.Marks1 = new HashSet<Mark>();
         }
     
         public int CourseTypeId { get; set; }
@@ -25,5 +28,11 @@ namespace SyllabusGenerator.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Course> Courses { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Course> Courses1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Mark> Marks { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Mark> Marks1 { get; set; }
     }
 }

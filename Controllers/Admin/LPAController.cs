@@ -34,7 +34,7 @@ namespace SyllabusGenerator.Controllers.Admin
             b.CourseId = (int)Session["subjectId"];
             b.AssessmentStrategieId = Convert.ToInt32(frm["AsmntId"]);
             b.PlanId = (int)Session["planId"];
-            b.Strategies = db.AssessmentStrategies.Find(b.AssessmentStrategieId).Strategies.ToString();
+       //     b.Strategies = db.AssessmentStrategies.Find(b.AssessmentStrategieId).Strategies.ToString();
             db.LPAssessmentStrategies.Add(b);
             db.SaveChanges();
             return RedirectToAction("Index", new RouteValueDictionary(new { Controller = "LPA", Action = "Index", id = (int)Session["planId"] }));

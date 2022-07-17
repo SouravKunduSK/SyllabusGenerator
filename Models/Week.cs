@@ -18,6 +18,7 @@ namespace SyllabusGenerator.Models
         public Week()
         {
             this.LearningPlans = new HashSet<LearningPlan>();
+            this.LearningPlans1 = new HashSet<LearningPlan>();
         }
     
         public int WeekId { get; set; }
@@ -25,5 +26,7 @@ namespace SyllabusGenerator.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LearningPlan> LearningPlans { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LearningPlan> LearningPlans1 { get; set; }
     }
 }

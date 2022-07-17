@@ -1,0 +1,2499 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SyllabusGenaratorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AssessmentStrategie">
+          <Key>
+            <PropertyRef Name="AssessmentStrategieId" />
+          </Key>
+          <Property Name="AssessmentStrategieId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Strategies" Type="nvarchar" MaxLength="255" />
+          <Property Name="Description" Type="text" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="BookId" />
+          </Key>
+          <Property Name="BookId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookName" Type="nvarchar" MaxLength="255" />
+          <Property Name="BookTypeId" Type="int" />
+          <Property Name="CourseId" Type="int" />
+        </EntityType>
+        <EntityType Name="BookType">
+          <Key>
+            <PropertyRef Name="BookTypeId" />
+          </Key>
+          <Property Name="BookTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="CIE">
+          <Key>
+            <PropertyRef Name="CIEId" />
+          </Key>
+          <Property Name="CIEId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="255" />
+          <Property Name="Test" Type="nvarchar" MaxLength="255" />
+          <Property Name="Assignment" Type="nvarchar" MaxLength="255" />
+          <Property Name="Quizzes" Type="nvarchar" MaxLength="255" />
+          <Property Name="CCA" Type="nvarchar" MaxLength="255" />
+          <Property Name="CourseId" Type="int" />
+        </EntityType>
+        <EntityType Name="CLO">
+          <Key>
+            <PropertyRef Name="CLOId" />
+          </Key>
+          <Property Name="CLOId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Outcomes" Type="text" />
+          <Property Name="CourseId" Type="int" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" />
+          <Property Name="CourseTypeId" Type="int" />
+          <Property Name="TotalCredit" Type="float" />
+          <Property Name="MarksId" Type="int" />
+          <Property Name="TotalMarks" Type="float" />
+          <Property Name="Credit" Type="float" />
+          <Property Name="Summary" Type="text" />
+        </EntityType>
+        <EntityType Name="CourseDetail">
+          <Key>
+            <PropertyRef Name="CourseDetailId" />
+          </Key>
+          <Property Name="CourseDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseId" Type="int" />
+          <Property Name="CourseObjectiveId" Type="int" />
+          <Property Name="CLOId" Type="int" />
+          <Property Name="PlanId" Type="int" />
+          <Property Name="AssessmentStrategieId" Type="int" />
+          <Property Name="TeachingStrategieId" Type="int" />
+          <Property Name="CIEId" Type="int" />
+          <Property Name="SEEId" Type="int" />
+          <Property Name="BookId" Type="int" />
+        </EntityType>
+        <EntityType Name="CourseObjective">
+          <Key>
+            <PropertyRef Name="CourseObjectiveId" />
+          </Key>
+          <Property Name="CourseObjectiveId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Objectives" Type="text" />
+          <Property Name="CourseId" Type="int" />
+        </EntityType>
+        <EntityType Name="CourseType">
+          <Key>
+            <PropertyRef Name="CourseTypeId" />
+          </Key>
+          <Property Name="CourseTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="LearningPlan">
+          <Key>
+            <PropertyRef Name="PlanId" />
+          </Key>
+          <Property Name="PlanId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WeekId" Type="int" />
+          <Property Name="Topics" Type="nvarchar" MaxLength="255" />
+          <Property Name="LearningOutcome" Type="nvarchar" MaxLength="255" />
+          <Property Name="TeachingStrategieId" Type="int" />
+          <Property Name="AssessmentStrategieId" Type="int" />
+          <Property Name="CLOId" Type="int" />
+          <Property Name="CourseId" Type="int" />
+          <Property Name="LPAssessmentStrategieId" Type="int" />
+          <Property Name="LPTeachingStrategieId" Type="int" />
+          <Property Name="LPCLOId" Type="int" />
+        </EntityType>
+        <EntityType Name="LPAssessmentStrategie">
+          <Key>
+            <PropertyRef Name="LPAssessmentStrategieId" />
+          </Key>
+          <Property Name="LPAssessmentStrategieId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssessmentStrategieId" Type="int" />
+          <Property Name="PlanId" Type="int" />
+          <Property Name="CourseId" Type="int" />
+        </EntityType>
+        <EntityType Name="LPCLO">
+          <Key>
+            <PropertyRef Name="LPCLOId" />
+          </Key>
+          <Property Name="LPCLOId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CLOId" Type="int" />
+          <Property Name="PlanId" Type="int" />
+          <Property Name="CourseId" Type="int" />
+        </EntityType>
+        <EntityType Name="LPTeachingStrategie">
+          <Key>
+            <PropertyRef Name="LPTeachingStrategieId" />
+          </Key>
+          <Property Name="LPTeachingStrategieId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeachingStrategieId" Type="int" />
+          <Property Name="PlanId" Type="int" />
+          <Property Name="CourseId" Type="int" />
+        </EntityType>
+        <EntityType Name="Marks">
+          <Key>
+            <PropertyRef Name="MarksId" />
+          </Key>
+          <Property Name="MarksId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseTypeId" Type="int" />
+          <Property Name="CT" Type="float" />
+          <Property Name="Attendence" Type="float" />
+          <Property Name="SEE" Type="float" />
+          <Property Name="SE" Type="float" />
+          <Property Name="Total" Type="float" />
+        </EntityType>
+        <EntityType Name="SEE">
+          <Key>
+            <PropertyRef Name="SEEId" />
+          </Key>
+          <Property Name="SEEId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="255" />
+          <Property Name="Test" Type="nvarchar" MaxLength="255" />
+          <Property Name="CourseId" Type="int" />
+        </EntityType>
+        <EntityType Name="TeachingStrategie">
+          <Key>
+            <PropertyRef Name="TeachingStrategieId" />
+          </Key>
+          <Property Name="TeachingStrategieId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Strategies" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Week">
+          <Key>
+            <PropertyRef Name="WeekId" />
+          </Key>
+          <Property Name="WeekId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Timeline" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK__Book__BookTypeId__45F365D3">
+          <End Role="BookType" Type="Self.BookType" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookType">
+              <PropertyRef Name="BookTypeId" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="BookTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Book__BookTypeId__70DDC3D8">
+          <End Role="BookType" Type="Self.BookType" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookType">
+              <PropertyRef Name="BookTypeId" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="BookTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Book__CourseId__4AB81AF0">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Book__CourseId__75A278F5">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CIE__CourseId__5441852A">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="CIE" Type="Self.CIE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CIE">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CIE__CourseId__7F2BE32F">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="CIE" Type="Self.CIE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CIE">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CLO__CourseId__4CA06362">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="CLO" Type="Self.CLO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CLO">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CLO__CourseId__778AC167">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="CLO" Type="Self.CLO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CLO">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Course__CourseTy__4316F928">
+          <End Role="CourseType" Type="Self.CourseType" Multiplicity="0..1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseType">
+              <PropertyRef Name="CourseTypeId" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="CourseTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Course__CourseTy__6E01572D">
+          <End Role="CourseType" Type="Self.CourseType" Multiplicity="0..1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseType">
+              <PropertyRef Name="CourseTypeId" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="CourseTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Course__MarksId__440B1D61">
+          <End Role="Marks" Type="Self.Marks" Multiplicity="0..1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marks">
+              <PropertyRef Name="MarksId" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="MarksId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Course__MarksId__6EF57B66">
+          <End Role="Marks" Type="Self.Marks" Multiplicity="0..1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marks">
+              <PropertyRef Name="MarksId" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="MarksId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__Asses__03F0984C">
+          <End Role="AssessmentStrategie" Type="Self.AssessmentStrategie" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentStrategie">
+              <PropertyRef Name="AssessmentStrategieId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="AssessmentStrategieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__Asses__59063A47">
+          <End Role="AssessmentStrategie" Type="Self.AssessmentStrategie" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentStrategie">
+              <PropertyRef Name="AssessmentStrategieId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="AssessmentStrategieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__BookI__07C12930">
+          <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="BookId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="BookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__BookI__5CD6CB2B">
+          <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="BookId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="BookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__CIEId__05D8E0BE">
+          <End Role="CIE" Type="Self.CIE" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CIE">
+              <PropertyRef Name="CIEId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="CIEId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__CIEId__5AEE82B9">
+          <End Role="CIE" Type="Self.CIE" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CIE">
+              <PropertyRef Name="CIEId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="CIEId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__CLOId__02084FDA">
+          <End Role="CLO" Type="Self.CLO" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLO">
+              <PropertyRef Name="CLOId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="CLOId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__CLOId__571DF1D5">
+          <End Role="CLO" Type="Self.CLO" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLO">
+              <PropertyRef Name="CLOId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="CLOId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__Cours__01142BA1">
+          <End Role="CourseObjective" Type="Self.CourseObjective" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseObjective">
+              <PropertyRef Name="CourseObjectiveId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="CourseObjectiveId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__Cours__49C3F6B7">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__Cours__5629CD9C">
+          <End Role="CourseObjective" Type="Self.CourseObjective" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseObjective">
+              <PropertyRef Name="CourseObjectiveId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="CourseObjectiveId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__Cours__74AE54BC">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__PlanI__02FC7413">
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LearningPlan">
+              <PropertyRef Name="PlanId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="PlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__PlanI__5812160E">
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LearningPlan">
+              <PropertyRef Name="PlanId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="PlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__SEEId__06CD04F7">
+          <End Role="SEE" Type="Self.SEE" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEE">
+              <PropertyRef Name="SEEId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="SEEId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__SEEId__5BE2A6F2">
+          <End Role="SEE" Type="Self.SEE" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEE">
+              <PropertyRef Name="SEEId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="SEEId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__Teach__04E4BC85">
+          <End Role="TeachingStrategie" Type="Self.TeachingStrategie" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeachingStrategie">
+              <PropertyRef Name="TeachingStrategieId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="TeachingStrategieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__Teach__59FA5E80">
+          <End Role="TeachingStrategie" Type="Self.TeachingStrategie" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeachingStrategie">
+              <PropertyRef Name="TeachingStrategieId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="TeachingStrategieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseObj__Cours__4BAC3F29">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="CourseObjective" Type="Self.CourseObjective" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CourseObjective">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseObj__Cours__76969D2E">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="CourseObjective" Type="Self.CourseObjective" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CourseObjective">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LearningP__Asses__46E78A0C">
+          <End Role="AssessmentStrategie" Type="Self.AssessmentStrategie" Multiplicity="0..1" />
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentStrategie">
+              <PropertyRef Name="AssessmentStrategieId" />
+            </Principal>
+            <Dependent Role="LearningPlan">
+              <PropertyRef Name="AssessmentStrategieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LearningP__Asses__71D1E811">
+          <End Role="AssessmentStrategie" Type="Self.AssessmentStrategie" Multiplicity="0..1" />
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentStrategie">
+              <PropertyRef Name="AssessmentStrategieId" />
+            </Principal>
+            <Dependent Role="LearningPlan">
+              <PropertyRef Name="AssessmentStrategieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LearningP__CLOId__48CFD27E">
+          <End Role="CLO" Type="Self.CLO" Multiplicity="0..1" />
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLO">
+              <PropertyRef Name="CLOId" />
+            </Principal>
+            <Dependent Role="LearningPlan">
+              <PropertyRef Name="CLOId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LearningP__CLOId__73BA3083">
+          <End Role="CLO" Type="Self.CLO" Multiplicity="0..1" />
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLO">
+              <PropertyRef Name="CLOId" />
+            </Principal>
+            <Dependent Role="LearningPlan">
+              <PropertyRef Name="CLOId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LearningP__Teach__47DBAE45">
+          <End Role="TeachingStrategie" Type="Self.TeachingStrategie" Multiplicity="0..1" />
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeachingStrategie">
+              <PropertyRef Name="TeachingStrategieId" />
+            </Principal>
+            <Dependent Role="LearningPlan">
+              <PropertyRef Name="TeachingStrategieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LearningP__Teach__72C60C4A">
+          <End Role="TeachingStrategie" Type="Self.TeachingStrategie" Multiplicity="0..1" />
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeachingStrategie">
+              <PropertyRef Name="TeachingStrategieId" />
+            </Principal>
+            <Dependent Role="LearningPlan">
+              <PropertyRef Name="TeachingStrategieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LearningP__WeekI__534D60F1">
+          <End Role="Week" Type="Self.Week" Multiplicity="0..1" />
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Week">
+              <PropertyRef Name="WeekId" />
+            </Principal>
+            <Dependent Role="LearningPlan">
+              <PropertyRef Name="WeekId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LearningP__WeekI__7E37BEF6">
+          <End Role="Week" Type="Self.Week" Multiplicity="0..1" />
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Week">
+              <PropertyRef Name="WeekId" />
+            </Principal>
+            <Dependent Role="LearningPlan">
+              <PropertyRef Name="WeekId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LPAssessm__Asses__5165187F">
+          <End Role="AssessmentStrategie" Type="Self.AssessmentStrategie" Multiplicity="0..1" />
+          <End Role="LPAssessmentStrategie" Type="Self.LPAssessmentStrategie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentStrategie">
+              <PropertyRef Name="AssessmentStrategieId" />
+            </Principal>
+            <Dependent Role="LPAssessmentStrategie">
+              <PropertyRef Name="AssessmentStrategieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LPAssessm__Asses__7C4F7684">
+          <End Role="AssessmentStrategie" Type="Self.AssessmentStrategie" Multiplicity="0..1" />
+          <End Role="LPAssessmentStrategie" Type="Self.LPAssessmentStrategie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentStrategie">
+              <PropertyRef Name="AssessmentStrategieId" />
+            </Principal>
+            <Dependent Role="LPAssessmentStrategie">
+              <PropertyRef Name="AssessmentStrategieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LPAssessm__PlanI__52593CB8">
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="0..1" />
+          <End Role="LPAssessmentStrategie" Type="Self.LPAssessmentStrategie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LearningPlan">
+              <PropertyRef Name="PlanId" />
+            </Principal>
+            <Dependent Role="LPAssessmentStrategie">
+              <PropertyRef Name="PlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LPAssessm__PlanI__7D439ABD">
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="0..1" />
+          <End Role="LPAssessmentStrategie" Type="Self.LPAssessmentStrategie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LearningPlan">
+              <PropertyRef Name="PlanId" />
+            </Principal>
+            <Dependent Role="LPAssessmentStrategie">
+              <PropertyRef Name="PlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LPCLO__CLOId__4D94879B">
+          <End Role="CLO" Type="Self.CLO" Multiplicity="0..1" />
+          <End Role="LPCLO" Type="Self.LPCLO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLO">
+              <PropertyRef Name="CLOId" />
+            </Principal>
+            <Dependent Role="LPCLO">
+              <PropertyRef Name="CLOId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LPCLO__CLOId__787EE5A0">
+          <End Role="CLO" Type="Self.CLO" Multiplicity="0..1" />
+          <End Role="LPCLO" Type="Self.LPCLO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLO">
+              <PropertyRef Name="CLOId" />
+            </Principal>
+            <Dependent Role="LPCLO">
+              <PropertyRef Name="CLOId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LPCLO__PlanId__4E88ABD4">
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="0..1" />
+          <End Role="LPCLO" Type="Self.LPCLO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LearningPlan">
+              <PropertyRef Name="PlanId" />
+            </Principal>
+            <Dependent Role="LPCLO">
+              <PropertyRef Name="PlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LPCLO__PlanId__797309D9">
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="0..1" />
+          <End Role="LPCLO" Type="Self.LPCLO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LearningPlan">
+              <PropertyRef Name="PlanId" />
+            </Principal>
+            <Dependent Role="LPCLO">
+              <PropertyRef Name="PlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LPTeachin__PlanI__5070F446">
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="0..1" />
+          <End Role="LPTeachingStrategie" Type="Self.LPTeachingStrategie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LearningPlan">
+              <PropertyRef Name="PlanId" />
+            </Principal>
+            <Dependent Role="LPTeachingStrategie">
+              <PropertyRef Name="PlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LPTeachin__PlanI__7B5B524B">
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="0..1" />
+          <End Role="LPTeachingStrategie" Type="Self.LPTeachingStrategie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LearningPlan">
+              <PropertyRef Name="PlanId" />
+            </Principal>
+            <Dependent Role="LPTeachingStrategie">
+              <PropertyRef Name="PlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LPTeachin__Teach__4F7CD00D">
+          <End Role="TeachingStrategie" Type="Self.TeachingStrategie" Multiplicity="0..1" />
+          <End Role="LPTeachingStrategie" Type="Self.LPTeachingStrategie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeachingStrategie">
+              <PropertyRef Name="TeachingStrategieId" />
+            </Principal>
+            <Dependent Role="LPTeachingStrategie">
+              <PropertyRef Name="TeachingStrategieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LPTeachin__Teach__7A672E12">
+          <End Role="TeachingStrategie" Type="Self.TeachingStrategie" Multiplicity="0..1" />
+          <End Role="LPTeachingStrategie" Type="Self.LPTeachingStrategie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeachingStrategie">
+              <PropertyRef Name="TeachingStrategieId" />
+            </Principal>
+            <Dependent Role="LPTeachingStrategie">
+              <PropertyRef Name="TeachingStrategieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Marks__CourseTyp__44FF419A">
+          <End Role="CourseType" Type="Self.CourseType" Multiplicity="0..1" />
+          <End Role="Marks" Type="Self.Marks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseType">
+              <PropertyRef Name="CourseTypeId" />
+            </Principal>
+            <Dependent Role="Marks">
+              <PropertyRef Name="CourseTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Marks__CourseTyp__6FE99F9F">
+          <End Role="CourseType" Type="Self.CourseType" Multiplicity="0..1" />
+          <End Role="Marks" Type="Self.Marks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseType">
+              <PropertyRef Name="CourseTypeId" />
+            </Principal>
+            <Dependent Role="Marks">
+              <PropertyRef Name="CourseTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SEE__CourseId__00200768">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="SEE" Type="Self.SEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="SEE">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SEE__CourseId__5535A963">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="SEE" Type="Self.SEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="SEE">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SyllabusGenaratorModelStoreContainer">
+          <EntitySet Name="AssessmentStrategie" EntityType="Self.AssessmentStrategie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookType" EntityType="Self.BookType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CIE" EntityType="Self.CIE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CLO" EntityType="Self.CLO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourseDetail" EntityType="Self.CourseDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourseObjective" EntityType="Self.CourseObjective" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourseType" EntityType="Self.CourseType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LearningPlan" EntityType="Self.LearningPlan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LPAssessmentStrategie" EntityType="Self.LPAssessmentStrategie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LPCLO" EntityType="Self.LPCLO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LPTeachingStrategie" EntityType="Self.LPTeachingStrategie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marks" EntityType="Self.Marks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SEE" EntityType="Self.SEE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeachingStrategie" EntityType="Self.TeachingStrategie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Week" EntityType="Self.Week" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Book__BookTypeId__45F365D3" Association="Self.FK__Book__BookTypeId__45F365D3">
+            <End Role="BookType" EntitySet="BookType" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Book__BookTypeId__70DDC3D8" Association="Self.FK__Book__BookTypeId__70DDC3D8">
+            <End Role="BookType" EntitySet="BookType" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Book__CourseId__4AB81AF0" Association="Self.FK__Book__CourseId__4AB81AF0">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Book__CourseId__75A278F5" Association="Self.FK__Book__CourseId__75A278F5">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CIE__CourseId__5441852A" Association="Self.FK__CIE__CourseId__5441852A">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="CIE" EntitySet="CIE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CIE__CourseId__7F2BE32F" Association="Self.FK__CIE__CourseId__7F2BE32F">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="CIE" EntitySet="CIE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CLO__CourseId__4CA06362" Association="Self.FK__CLO__CourseId__4CA06362">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="CLO" EntitySet="CLO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CLO__CourseId__778AC167" Association="Self.FK__CLO__CourseId__778AC167">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="CLO" EntitySet="CLO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Course__CourseTy__4316F928" Association="Self.FK__Course__CourseTy__4316F928">
+            <End Role="CourseType" EntitySet="CourseType" />
+            <End Role="Course" EntitySet="Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Course__CourseTy__6E01572D" Association="Self.FK__Course__CourseTy__6E01572D">
+            <End Role="CourseType" EntitySet="CourseType" />
+            <End Role="Course" EntitySet="Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Course__MarksId__440B1D61" Association="Self.FK__Course__MarksId__440B1D61">
+            <End Role="Marks" EntitySet="Marks" />
+            <End Role="Course" EntitySet="Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Course__MarksId__6EF57B66" Association="Self.FK__Course__MarksId__6EF57B66">
+            <End Role="Marks" EntitySet="Marks" />
+            <End Role="Course" EntitySet="Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__Asses__03F0984C" Association="Self.FK__CourseDet__Asses__03F0984C">
+            <End Role="AssessmentStrategie" EntitySet="AssessmentStrategie" />
+            <End Role="CourseDetail" EntitySet="CourseDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__Asses__59063A47" Association="Self.FK__CourseDet__Asses__59063A47">
+            <End Role="AssessmentStrategie" EntitySet="AssessmentStrategie" />
+            <End Role="CourseDetail" EntitySet="CourseDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__BookI__07C12930" Association="Self.FK__CourseDet__BookI__07C12930">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="CourseDetail" EntitySet="CourseDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__BookI__5CD6CB2B" Association="Self.FK__CourseDet__BookI__5CD6CB2B">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="CourseDetail" EntitySet="CourseDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__CIEId__05D8E0BE" Association="Self.FK__CourseDet__CIEId__05D8E0BE">
+            <End Role="CIE" EntitySet="CIE" />
+            <End Role="CourseDetail" EntitySet="CourseDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__CIEId__5AEE82B9" Association="Self.FK__CourseDet__CIEId__5AEE82B9">
+            <End Role="CIE" EntitySet="CIE" />
+            <End Role="CourseDetail" EntitySet="CourseDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__CLOId__02084FDA" Association="Self.FK__CourseDet__CLOId__02084FDA">
+            <End Role="CLO" EntitySet="CLO" />
+            <End Role="CourseDetail" EntitySet="CourseDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__CLOId__571DF1D5" Association="Self.FK__CourseDet__CLOId__571DF1D5">
+            <End Role="CLO" EntitySet="CLO" />
+            <End Role="CourseDetail" EntitySet="CourseDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__Cours__01142BA1" Association="Self.FK__CourseDet__Cours__01142BA1">
+            <End Role="CourseObjective" EntitySet="CourseObjective" />
+            <End Role="CourseDetail" EntitySet="CourseDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__Cours__49C3F6B7" Association="Self.FK__CourseDet__Cours__49C3F6B7">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="CourseDetail" EntitySet="CourseDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__Cours__5629CD9C" Association="Self.FK__CourseDet__Cours__5629CD9C">
+            <End Role="CourseObjective" EntitySet="CourseObjective" />
+            <End Role="CourseDetail" EntitySet="CourseDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__Cours__74AE54BC" Association="Self.FK__CourseDet__Cours__74AE54BC">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="CourseDetail" EntitySet="CourseDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__PlanI__02FC7413" Association="Self.FK__CourseDet__PlanI__02FC7413">
+            <End Role="LearningPlan" EntitySet="LearningPlan" />
+            <End Role="CourseDetail" EntitySet="CourseDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__PlanI__5812160E" Association="Self.FK__CourseDet__PlanI__5812160E">
+            <End Role="LearningPlan" EntitySet="LearningPlan" />
+            <End Role="CourseDetail" EntitySet="CourseDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__SEEId__06CD04F7" Association="Self.FK__CourseDet__SEEId__06CD04F7">
+            <End Role="SEE" EntitySet="SEE" />
+            <End Role="CourseDetail" EntitySet="CourseDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__SEEId__5BE2A6F2" Association="Self.FK__CourseDet__SEEId__5BE2A6F2">
+            <End Role="SEE" EntitySet="SEE" />
+            <End Role="CourseDetail" EntitySet="CourseDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__Teach__04E4BC85" Association="Self.FK__CourseDet__Teach__04E4BC85">
+            <End Role="TeachingStrategie" EntitySet="TeachingStrategie" />
+            <End Role="CourseDetail" EntitySet="CourseDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__Teach__59FA5E80" Association="Self.FK__CourseDet__Teach__59FA5E80">
+            <End Role="TeachingStrategie" EntitySet="TeachingStrategie" />
+            <End Role="CourseDetail" EntitySet="CourseDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseObj__Cours__4BAC3F29" Association="Self.FK__CourseObj__Cours__4BAC3F29">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="CourseObjective" EntitySet="CourseObjective" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseObj__Cours__76969D2E" Association="Self.FK__CourseObj__Cours__76969D2E">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="CourseObjective" EntitySet="CourseObjective" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LearningP__Asses__46E78A0C" Association="Self.FK__LearningP__Asses__46E78A0C">
+            <End Role="AssessmentStrategie" EntitySet="AssessmentStrategie" />
+            <End Role="LearningPlan" EntitySet="LearningPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LearningP__Asses__71D1E811" Association="Self.FK__LearningP__Asses__71D1E811">
+            <End Role="AssessmentStrategie" EntitySet="AssessmentStrategie" />
+            <End Role="LearningPlan" EntitySet="LearningPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LearningP__CLOId__48CFD27E" Association="Self.FK__LearningP__CLOId__48CFD27E">
+            <End Role="CLO" EntitySet="CLO" />
+            <End Role="LearningPlan" EntitySet="LearningPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LearningP__CLOId__73BA3083" Association="Self.FK__LearningP__CLOId__73BA3083">
+            <End Role="CLO" EntitySet="CLO" />
+            <End Role="LearningPlan" EntitySet="LearningPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LearningP__Teach__47DBAE45" Association="Self.FK__LearningP__Teach__47DBAE45">
+            <End Role="TeachingStrategie" EntitySet="TeachingStrategie" />
+            <End Role="LearningPlan" EntitySet="LearningPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LearningP__Teach__72C60C4A" Association="Self.FK__LearningP__Teach__72C60C4A">
+            <End Role="TeachingStrategie" EntitySet="TeachingStrategie" />
+            <End Role="LearningPlan" EntitySet="LearningPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LearningP__WeekI__534D60F1" Association="Self.FK__LearningP__WeekI__534D60F1">
+            <End Role="Week" EntitySet="Week" />
+            <End Role="LearningPlan" EntitySet="LearningPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LearningP__WeekI__7E37BEF6" Association="Self.FK__LearningP__WeekI__7E37BEF6">
+            <End Role="Week" EntitySet="Week" />
+            <End Role="LearningPlan" EntitySet="LearningPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LPAssessm__Asses__5165187F" Association="Self.FK__LPAssessm__Asses__5165187F">
+            <End Role="AssessmentStrategie" EntitySet="AssessmentStrategie" />
+            <End Role="LPAssessmentStrategie" EntitySet="LPAssessmentStrategie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LPAssessm__Asses__7C4F7684" Association="Self.FK__LPAssessm__Asses__7C4F7684">
+            <End Role="AssessmentStrategie" EntitySet="AssessmentStrategie" />
+            <End Role="LPAssessmentStrategie" EntitySet="LPAssessmentStrategie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LPAssessm__PlanI__52593CB8" Association="Self.FK__LPAssessm__PlanI__52593CB8">
+            <End Role="LearningPlan" EntitySet="LearningPlan" />
+            <End Role="LPAssessmentStrategie" EntitySet="LPAssessmentStrategie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LPAssessm__PlanI__7D439ABD" Association="Self.FK__LPAssessm__PlanI__7D439ABD">
+            <End Role="LearningPlan" EntitySet="LearningPlan" />
+            <End Role="LPAssessmentStrategie" EntitySet="LPAssessmentStrategie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LPCLO__CLOId__4D94879B" Association="Self.FK__LPCLO__CLOId__4D94879B">
+            <End Role="CLO" EntitySet="CLO" />
+            <End Role="LPCLO" EntitySet="LPCLO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LPCLO__CLOId__787EE5A0" Association="Self.FK__LPCLO__CLOId__787EE5A0">
+            <End Role="CLO" EntitySet="CLO" />
+            <End Role="LPCLO" EntitySet="LPCLO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LPCLO__PlanId__4E88ABD4" Association="Self.FK__LPCLO__PlanId__4E88ABD4">
+            <End Role="LearningPlan" EntitySet="LearningPlan" />
+            <End Role="LPCLO" EntitySet="LPCLO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LPCLO__PlanId__797309D9" Association="Self.FK__LPCLO__PlanId__797309D9">
+            <End Role="LearningPlan" EntitySet="LearningPlan" />
+            <End Role="LPCLO" EntitySet="LPCLO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LPTeachin__PlanI__5070F446" Association="Self.FK__LPTeachin__PlanI__5070F446">
+            <End Role="LearningPlan" EntitySet="LearningPlan" />
+            <End Role="LPTeachingStrategie" EntitySet="LPTeachingStrategie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LPTeachin__PlanI__7B5B524B" Association="Self.FK__LPTeachin__PlanI__7B5B524B">
+            <End Role="LearningPlan" EntitySet="LearningPlan" />
+            <End Role="LPTeachingStrategie" EntitySet="LPTeachingStrategie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LPTeachin__Teach__4F7CD00D" Association="Self.FK__LPTeachin__Teach__4F7CD00D">
+            <End Role="TeachingStrategie" EntitySet="TeachingStrategie" />
+            <End Role="LPTeachingStrategie" EntitySet="LPTeachingStrategie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LPTeachin__Teach__7A672E12" Association="Self.FK__LPTeachin__Teach__7A672E12">
+            <End Role="TeachingStrategie" EntitySet="TeachingStrategie" />
+            <End Role="LPTeachingStrategie" EntitySet="LPTeachingStrategie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Marks__CourseTyp__44FF419A" Association="Self.FK__Marks__CourseTyp__44FF419A">
+            <End Role="CourseType" EntitySet="CourseType" />
+            <End Role="Marks" EntitySet="Marks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Marks__CourseTyp__6FE99F9F" Association="Self.FK__Marks__CourseTyp__6FE99F9F">
+            <End Role="CourseType" EntitySet="CourseType" />
+            <End Role="Marks" EntitySet="Marks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SEE__CourseId__00200768" Association="Self.FK__SEE__CourseId__00200768">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="SEE" EntitySet="SEE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SEE__CourseId__5535A963" Association="Self.FK__SEE__CourseId__5535A963">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="SEE" EntitySet="SEE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SyllabusGenaratorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AssessmentStrategie">
+          <Key>
+            <PropertyRef Name="AssessmentStrategieId" />
+          </Key>
+          <Property Name="AssessmentStrategieId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Strategies" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CourseDetails" Relationship="Self.FK__CourseDet__Asses__03F0984C" FromRole="AssessmentStrategie" ToRole="CourseDetail" />
+          <NavigationProperty Name="CourseDetails1" Relationship="Self.FK__CourseDet__Asses__59063A47" FromRole="AssessmentStrategie" ToRole="CourseDetail" />
+          <NavigationProperty Name="LearningPlans" Relationship="Self.FK__LearningP__Asses__46E78A0C" FromRole="AssessmentStrategie" ToRole="LearningPlan" />
+          <NavigationProperty Name="LearningPlans1" Relationship="Self.FK__LearningP__Asses__71D1E811" FromRole="AssessmentStrategie" ToRole="LearningPlan" />
+          <NavigationProperty Name="LPAssessmentStrategies" Relationship="Self.FK__LPAssessm__Asses__5165187F" FromRole="AssessmentStrategie" ToRole="LPAssessmentStrategie" />
+          <NavigationProperty Name="LPAssessmentStrategies1" Relationship="Self.FK__LPAssessm__Asses__7C4F7684" FromRole="AssessmentStrategie" ToRole="LPAssessmentStrategie" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="BookId" />
+          </Key>
+          <Property Name="BookId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="BookTypeId" Type="Int32" />
+          <Property Name="CourseId" Type="Int32" />
+          <NavigationProperty Name="BookType" Relationship="Self.FK__Book__BookTypeId__45F365D3" FromRole="Book" ToRole="BookType" />
+          <NavigationProperty Name="BookType1" Relationship="Self.FK__Book__BookTypeId__70DDC3D8" FromRole="Book" ToRole="BookType" />
+          <NavigationProperty Name="Course" Relationship="Self.FK__Book__CourseId__4AB81AF0" FromRole="Book" ToRole="Course" />
+          <NavigationProperty Name="Course1" Relationship="Self.FK__Book__CourseId__75A278F5" FromRole="Book" ToRole="Course" />
+          <NavigationProperty Name="CourseDetails" Relationship="Self.FK__CourseDet__BookI__07C12930" FromRole="Book" ToRole="CourseDetail" />
+          <NavigationProperty Name="CourseDetails1" Relationship="Self.FK__CourseDet__BookI__5CD6CB2B" FromRole="Book" ToRole="CourseDetail" />
+        </EntityType>
+        <EntityType Name="BookType">
+          <Key>
+            <PropertyRef Name="BookTypeId" />
+          </Key>
+          <Property Name="BookTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Books" Relationship="Self.FK__Book__BookTypeId__45F365D3" FromRole="BookType" ToRole="Book" />
+          <NavigationProperty Name="Books1" Relationship="Self.FK__Book__BookTypeId__70DDC3D8" FromRole="BookType" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="CIE">
+          <Key>
+            <PropertyRef Name="CIEId" />
+          </Key>
+          <Property Name="CIEId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Category" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Test" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Assignment" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Quizzes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CCA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CourseId" Type="Int32" />
+          <NavigationProperty Name="Course" Relationship="Self.FK__CIE__CourseId__5441852A" FromRole="CIE" ToRole="Course" />
+          <NavigationProperty Name="Course1" Relationship="Self.FK__CIE__CourseId__7F2BE32F" FromRole="CIE" ToRole="Course" />
+          <NavigationProperty Name="CourseDetails" Relationship="Self.FK__CourseDet__CIEId__05D8E0BE" FromRole="CIE" ToRole="CourseDetail" />
+          <NavigationProperty Name="CourseDetails1" Relationship="Self.FK__CourseDet__CIEId__5AEE82B9" FromRole="CIE" ToRole="CourseDetail" />
+        </EntityType>
+        <EntityType Name="CLO">
+          <Key>
+            <PropertyRef Name="CLOId" />
+          </Key>
+          <Property Name="CLOId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Outcomes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CourseId" Type="Int32" />
+          <NavigationProperty Name="Course" Relationship="Self.FK__CLO__CourseId__4CA06362" FromRole="CLO" ToRole="Course" />
+          <NavigationProperty Name="Course1" Relationship="Self.FK__CLO__CourseId__778AC167" FromRole="CLO" ToRole="Course" />
+          <NavigationProperty Name="CourseDetails" Relationship="Self.FK__CourseDet__CLOId__02084FDA" FromRole="CLO" ToRole="CourseDetail" />
+          <NavigationProperty Name="CourseDetails1" Relationship="Self.FK__CourseDet__CLOId__571DF1D5" FromRole="CLO" ToRole="CourseDetail" />
+          <NavigationProperty Name="LearningPlans" Relationship="Self.FK__LearningP__CLOId__48CFD27E" FromRole="CLO" ToRole="LearningPlan" />
+          <NavigationProperty Name="LearningPlans1" Relationship="Self.FK__LearningP__CLOId__73BA3083" FromRole="CLO" ToRole="LearningPlan" />
+          <NavigationProperty Name="LPCLOes" Relationship="Self.FK__LPCLO__CLOId__4D94879B" FromRole="CLO" ToRole="LPCLO" />
+          <NavigationProperty Name="LPCLOes1" Relationship="Self.FK__LPCLO__CLOId__787EE5A0" FromRole="CLO" ToRole="LPCLO" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CourseTypeId" Type="Int32" />
+          <Property Name="TotalCredit" Type="Double" />
+          <Property Name="MarksId" Type="Int32" />
+          <Property Name="TotalMarks" Type="Double" />
+          <Property Name="Credit" Type="Double" />
+          <Property Name="Summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Books" Relationship="Self.FK__Book__CourseId__4AB81AF0" FromRole="Course" ToRole="Book" />
+          <NavigationProperty Name="Books1" Relationship="Self.FK__Book__CourseId__75A278F5" FromRole="Course" ToRole="Book" />
+          <NavigationProperty Name="CIEs" Relationship="Self.FK__CIE__CourseId__5441852A" FromRole="Course" ToRole="CIE" />
+          <NavigationProperty Name="CIEs1" Relationship="Self.FK__CIE__CourseId__7F2BE32F" FromRole="Course" ToRole="CIE" />
+          <NavigationProperty Name="CLOes" Relationship="Self.FK__CLO__CourseId__4CA06362" FromRole="Course" ToRole="CLO" />
+          <NavigationProperty Name="CLOes1" Relationship="Self.FK__CLO__CourseId__778AC167" FromRole="Course" ToRole="CLO" />
+          <NavigationProperty Name="CourseType" Relationship="Self.FK__Course__CourseTy__4316F928" FromRole="Course" ToRole="CourseType" />
+          <NavigationProperty Name="CourseType1" Relationship="Self.FK__Course__CourseTy__6E01572D" FromRole="Course" ToRole="CourseType" />
+          <NavigationProperty Name="Mark" Relationship="Self.FK__Course__MarksId__440B1D61" FromRole="Course" ToRole="Marks" />
+          <NavigationProperty Name="Mark1" Relationship="Self.FK__Course__MarksId__6EF57B66" FromRole="Course" ToRole="Marks" />
+          <NavigationProperty Name="CourseDetails" Relationship="Self.FK__CourseDet__Cours__49C3F6B7" FromRole="Course" ToRole="CourseDetail" />
+          <NavigationProperty Name="CourseDetails1" Relationship="Self.FK__CourseDet__Cours__74AE54BC" FromRole="Course" ToRole="CourseDetail" />
+          <NavigationProperty Name="CourseObjectives" Relationship="Self.FK__CourseObj__Cours__4BAC3F29" FromRole="Course" ToRole="CourseObjective" />
+          <NavigationProperty Name="CourseObjectives1" Relationship="Self.FK__CourseObj__Cours__76969D2E" FromRole="Course" ToRole="CourseObjective" />
+          <NavigationProperty Name="SEEs" Relationship="Self.FK__SEE__CourseId__00200768" FromRole="Course" ToRole="SEE" />
+          <NavigationProperty Name="SEEs1" Relationship="Self.FK__SEE__CourseId__5535A963" FromRole="Course" ToRole="SEE" />
+        </EntityType>
+        <EntityType Name="CourseDetail">
+          <Key>
+            <PropertyRef Name="CourseDetailId" />
+          </Key>
+          <Property Name="CourseDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseId" Type="Int32" />
+          <Property Name="CourseObjectiveId" Type="Int32" />
+          <Property Name="CLOId" Type="Int32" />
+          <Property Name="PlanId" Type="Int32" />
+          <Property Name="AssessmentStrategieId" Type="Int32" />
+          <Property Name="TeachingStrategieId" Type="Int32" />
+          <Property Name="CIEId" Type="Int32" />
+          <Property Name="SEEId" Type="Int32" />
+          <Property Name="BookId" Type="Int32" />
+          <NavigationProperty Name="AssessmentStrategie" Relationship="Self.FK__CourseDet__Asses__03F0984C" FromRole="CourseDetail" ToRole="AssessmentStrategie" />
+          <NavigationProperty Name="AssessmentStrategie1" Relationship="Self.FK__CourseDet__Asses__59063A47" FromRole="CourseDetail" ToRole="AssessmentStrategie" />
+          <NavigationProperty Name="Book" Relationship="Self.FK__CourseDet__BookI__07C12930" FromRole="CourseDetail" ToRole="Book" />
+          <NavigationProperty Name="Book1" Relationship="Self.FK__CourseDet__BookI__5CD6CB2B" FromRole="CourseDetail" ToRole="Book" />
+          <NavigationProperty Name="CIE" Relationship="Self.FK__CourseDet__CIEId__05D8E0BE" FromRole="CourseDetail" ToRole="CIE" />
+          <NavigationProperty Name="CIE1" Relationship="Self.FK__CourseDet__CIEId__5AEE82B9" FromRole="CourseDetail" ToRole="CIE" />
+          <NavigationProperty Name="CLO" Relationship="Self.FK__CourseDet__CLOId__02084FDA" FromRole="CourseDetail" ToRole="CLO" />
+          <NavigationProperty Name="CLO1" Relationship="Self.FK__CourseDet__CLOId__571DF1D5" FromRole="CourseDetail" ToRole="CLO" />
+          <NavigationProperty Name="Course" Relationship="Self.FK__CourseDet__Cours__49C3F6B7" FromRole="CourseDetail" ToRole="Course" />
+          <NavigationProperty Name="Course1" Relationship="Self.FK__CourseDet__Cours__74AE54BC" FromRole="CourseDetail" ToRole="Course" />
+          <NavigationProperty Name="CourseObjective" Relationship="Self.FK__CourseDet__Cours__01142BA1" FromRole="CourseDetail" ToRole="CourseObjective" />
+          <NavigationProperty Name="CourseObjective1" Relationship="Self.FK__CourseDet__Cours__5629CD9C" FromRole="CourseDetail" ToRole="CourseObjective" />
+          <NavigationProperty Name="LearningPlan" Relationship="Self.FK__CourseDet__PlanI__02FC7413" FromRole="CourseDetail" ToRole="LearningPlan" />
+          <NavigationProperty Name="LearningPlan1" Relationship="Self.FK__CourseDet__PlanI__5812160E" FromRole="CourseDetail" ToRole="LearningPlan" />
+          <NavigationProperty Name="SEE" Relationship="Self.FK__CourseDet__SEEId__06CD04F7" FromRole="CourseDetail" ToRole="SEE" />
+          <NavigationProperty Name="SEE1" Relationship="Self.FK__CourseDet__SEEId__5BE2A6F2" FromRole="CourseDetail" ToRole="SEE" />
+          <NavigationProperty Name="TeachingStrategie" Relationship="Self.FK__CourseDet__Teach__04E4BC85" FromRole="CourseDetail" ToRole="TeachingStrategie" />
+          <NavigationProperty Name="TeachingStrategie1" Relationship="Self.FK__CourseDet__Teach__59FA5E80" FromRole="CourseDetail" ToRole="TeachingStrategie" />
+        </EntityType>
+        <EntityType Name="CourseObjective">
+          <Key>
+            <PropertyRef Name="CourseObjectiveId" />
+          </Key>
+          <Property Name="CourseObjectiveId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Objectives" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CourseId" Type="Int32" />
+          <NavigationProperty Name="Course" Relationship="Self.FK__CourseObj__Cours__4BAC3F29" FromRole="CourseObjective" ToRole="Course" />
+          <NavigationProperty Name="Course1" Relationship="Self.FK__CourseObj__Cours__76969D2E" FromRole="CourseObjective" ToRole="Course" />
+          <NavigationProperty Name="CourseDetails" Relationship="Self.FK__CourseDet__Cours__01142BA1" FromRole="CourseObjective" ToRole="CourseDetail" />
+          <NavigationProperty Name="CourseDetails1" Relationship="Self.FK__CourseDet__Cours__5629CD9C" FromRole="CourseObjective" ToRole="CourseDetail" />
+        </EntityType>
+        <EntityType Name="CourseType">
+          <Key>
+            <PropertyRef Name="CourseTypeId" />
+          </Key>
+          <Property Name="CourseTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Courses" Relationship="Self.FK__Course__CourseTy__4316F928" FromRole="CourseType" ToRole="Course" />
+          <NavigationProperty Name="Courses1" Relationship="Self.FK__Course__CourseTy__6E01572D" FromRole="CourseType" ToRole="Course" />
+          <NavigationProperty Name="Marks" Relationship="Self.FK__Marks__CourseTyp__44FF419A" FromRole="CourseType" ToRole="Marks" />
+          <NavigationProperty Name="Marks1" Relationship="Self.FK__Marks__CourseTyp__6FE99F9F" FromRole="CourseType" ToRole="Marks" />
+        </EntityType>
+        <EntityType Name="LearningPlan">
+          <Key>
+            <PropertyRef Name="PlanId" />
+          </Key>
+          <Property Name="PlanId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WeekId" Type="Int32" />
+          <Property Name="Topics" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LearningOutcome" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TeachingStrategieId" Type="Int32" />
+          <Property Name="AssessmentStrategieId" Type="Int32" />
+          <Property Name="CLOId" Type="Int32" />
+          <Property Name="CourseId" Type="Int32" />
+          <Property Name="LPAssessmentStrategieId" Type="Int32" />
+          <Property Name="LPTeachingStrategieId" Type="Int32" />
+          <Property Name="LPCLOId" Type="Int32" />
+          <NavigationProperty Name="AssessmentStrategie" Relationship="Self.FK__LearningP__Asses__46E78A0C" FromRole="LearningPlan" ToRole="AssessmentStrategie" />
+          <NavigationProperty Name="AssessmentStrategie1" Relationship="Self.FK__LearningP__Asses__71D1E811" FromRole="LearningPlan" ToRole="AssessmentStrategie" />
+          <NavigationProperty Name="CLO" Relationship="Self.FK__LearningP__CLOId__48CFD27E" FromRole="LearningPlan" ToRole="CLO" />
+          <NavigationProperty Name="CLO1" Relationship="Self.FK__LearningP__CLOId__73BA3083" FromRole="LearningPlan" ToRole="CLO" />
+          <NavigationProperty Name="CourseDetails" Relationship="Self.FK__CourseDet__PlanI__02FC7413" FromRole="LearningPlan" ToRole="CourseDetail" />
+          <NavigationProperty Name="CourseDetails1" Relationship="Self.FK__CourseDet__PlanI__5812160E" FromRole="LearningPlan" ToRole="CourseDetail" />
+          <NavigationProperty Name="TeachingStrategie" Relationship="Self.FK__LearningP__Teach__47DBAE45" FromRole="LearningPlan" ToRole="TeachingStrategie" />
+          <NavigationProperty Name="TeachingStrategie1" Relationship="Self.FK__LearningP__Teach__72C60C4A" FromRole="LearningPlan" ToRole="TeachingStrategie" />
+          <NavigationProperty Name="Week" Relationship="Self.FK__LearningP__WeekI__534D60F1" FromRole="LearningPlan" ToRole="Week" />
+          <NavigationProperty Name="Week1" Relationship="Self.FK__LearningP__WeekI__7E37BEF6" FromRole="LearningPlan" ToRole="Week" />
+          <NavigationProperty Name="LPAssessmentStrategies" Relationship="Self.FK__LPAssessm__PlanI__52593CB8" FromRole="LearningPlan" ToRole="LPAssessmentStrategie" />
+          <NavigationProperty Name="LPAssessmentStrategies1" Relationship="Self.FK__LPAssessm__PlanI__7D439ABD" FromRole="LearningPlan" ToRole="LPAssessmentStrategie" />
+          <NavigationProperty Name="LPCLOes" Relationship="Self.FK__LPCLO__PlanId__4E88ABD4" FromRole="LearningPlan" ToRole="LPCLO" />
+          <NavigationProperty Name="LPCLOes1" Relationship="Self.FK__LPCLO__PlanId__797309D9" FromRole="LearningPlan" ToRole="LPCLO" />
+          <NavigationProperty Name="LPTeachingStrategies" Relationship="Self.FK__LPTeachin__PlanI__5070F446" FromRole="LearningPlan" ToRole="LPTeachingStrategie" />
+          <NavigationProperty Name="LPTeachingStrategies1" Relationship="Self.FK__LPTeachin__PlanI__7B5B524B" FromRole="LearningPlan" ToRole="LPTeachingStrategie" />
+        </EntityType>
+        <EntityType Name="LPAssessmentStrategie">
+          <Key>
+            <PropertyRef Name="LPAssessmentStrategieId" />
+          </Key>
+          <Property Name="LPAssessmentStrategieId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssessmentStrategieId" Type="Int32" />
+          <Property Name="PlanId" Type="Int32" />
+          <Property Name="CourseId" Type="Int32" />
+          <NavigationProperty Name="AssessmentStrategie" Relationship="Self.FK__LPAssessm__Asses__5165187F" FromRole="LPAssessmentStrategie" ToRole="AssessmentStrategie" />
+          <NavigationProperty Name="AssessmentStrategie1" Relationship="Self.FK__LPAssessm__Asses__7C4F7684" FromRole="LPAssessmentStrategie" ToRole="AssessmentStrategie" />
+          <NavigationProperty Name="LearningPlan" Relationship="Self.FK__LPAssessm__PlanI__52593CB8" FromRole="LPAssessmentStrategie" ToRole="LearningPlan" />
+          <NavigationProperty Name="LearningPlan1" Relationship="Self.FK__LPAssessm__PlanI__7D439ABD" FromRole="LPAssessmentStrategie" ToRole="LearningPlan" />
+        </EntityType>
+        <EntityType Name="LPCLO">
+          <Key>
+            <PropertyRef Name="LPCLOId" />
+          </Key>
+          <Property Name="LPCLOId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CLOId" Type="Int32" />
+          <Property Name="PlanId" Type="Int32" />
+          <Property Name="CourseId" Type="Int32" />
+          <NavigationProperty Name="CLO" Relationship="Self.FK__LPCLO__CLOId__4D94879B" FromRole="LPCLO" ToRole="CLO" />
+          <NavigationProperty Name="CLO1" Relationship="Self.FK__LPCLO__CLOId__787EE5A0" FromRole="LPCLO" ToRole="CLO" />
+          <NavigationProperty Name="LearningPlan" Relationship="Self.FK__LPCLO__PlanId__4E88ABD4" FromRole="LPCLO" ToRole="LearningPlan" />
+          <NavigationProperty Name="LearningPlan1" Relationship="Self.FK__LPCLO__PlanId__797309D9" FromRole="LPCLO" ToRole="LearningPlan" />
+        </EntityType>
+        <EntityType Name="LPTeachingStrategie">
+          <Key>
+            <PropertyRef Name="LPTeachingStrategieId" />
+          </Key>
+          <Property Name="LPTeachingStrategieId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeachingStrategieId" Type="Int32" />
+          <Property Name="PlanId" Type="Int32" />
+          <Property Name="CourseId" Type="Int32" />
+          <NavigationProperty Name="LearningPlan" Relationship="Self.FK__LPTeachin__PlanI__5070F446" FromRole="LPTeachingStrategie" ToRole="LearningPlan" />
+          <NavigationProperty Name="LearningPlan1" Relationship="Self.FK__LPTeachin__PlanI__7B5B524B" FromRole="LPTeachingStrategie" ToRole="LearningPlan" />
+          <NavigationProperty Name="TeachingStrategie" Relationship="Self.FK__LPTeachin__Teach__4F7CD00D" FromRole="LPTeachingStrategie" ToRole="TeachingStrategie" />
+          <NavigationProperty Name="TeachingStrategie1" Relationship="Self.FK__LPTeachin__Teach__7A672E12" FromRole="LPTeachingStrategie" ToRole="TeachingStrategie" />
+        </EntityType>
+        <EntityType Name="Mark">
+          <Key>
+            <PropertyRef Name="MarksId" />
+          </Key>
+          <Property Name="MarksId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseTypeId" Type="Int32" />
+          <Property Name="CT" Type="Double" />
+          <Property Name="Attendence" Type="Double" />
+          <Property Name="SEE" Type="Double" />
+          <Property Name="SE" Type="Double" />
+          <Property Name="Total" Type="Double" />
+          <NavigationProperty Name="Courses" Relationship="Self.FK__Course__MarksId__440B1D61" FromRole="Marks" ToRole="Course" />
+          <NavigationProperty Name="Courses1" Relationship="Self.FK__Course__MarksId__6EF57B66" FromRole="Marks" ToRole="Course" />
+          <NavigationProperty Name="CourseType" Relationship="Self.FK__Marks__CourseTyp__44FF419A" FromRole="Marks" ToRole="CourseType" />
+          <NavigationProperty Name="CourseType1" Relationship="Self.FK__Marks__CourseTyp__6FE99F9F" FromRole="Marks" ToRole="CourseType" />
+        </EntityType>
+        <EntityType Name="SEE">
+          <Key>
+            <PropertyRef Name="SEEId" />
+          </Key>
+          <Property Name="SEEId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Category" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Test" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CourseId" Type="Int32" />
+          <NavigationProperty Name="Course" Relationship="Self.FK__SEE__CourseId__00200768" FromRole="SEE" ToRole="Course" />
+          <NavigationProperty Name="Course1" Relationship="Self.FK__SEE__CourseId__5535A963" FromRole="SEE" ToRole="Course" />
+          <NavigationProperty Name="CourseDetails" Relationship="Self.FK__CourseDet__SEEId__06CD04F7" FromRole="SEE" ToRole="CourseDetail" />
+          <NavigationProperty Name="CourseDetails1" Relationship="Self.FK__CourseDet__SEEId__5BE2A6F2" FromRole="SEE" ToRole="CourseDetail" />
+        </EntityType>
+        <EntityType Name="TeachingStrategie">
+          <Key>
+            <PropertyRef Name="TeachingStrategieId" />
+          </Key>
+          <Property Name="TeachingStrategieId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Strategies" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CourseDetails" Relationship="Self.FK__CourseDet__Teach__04E4BC85" FromRole="TeachingStrategie" ToRole="CourseDetail" />
+          <NavigationProperty Name="CourseDetails1" Relationship="Self.FK__CourseDet__Teach__59FA5E80" FromRole="TeachingStrategie" ToRole="CourseDetail" />
+          <NavigationProperty Name="LearningPlans" Relationship="Self.FK__LearningP__Teach__47DBAE45" FromRole="TeachingStrategie" ToRole="LearningPlan" />
+          <NavigationProperty Name="LearningPlans1" Relationship="Self.FK__LearningP__Teach__72C60C4A" FromRole="TeachingStrategie" ToRole="LearningPlan" />
+          <NavigationProperty Name="LPTeachingStrategies" Relationship="Self.FK__LPTeachin__Teach__4F7CD00D" FromRole="TeachingStrategie" ToRole="LPTeachingStrategie" />
+          <NavigationProperty Name="LPTeachingStrategies1" Relationship="Self.FK__LPTeachin__Teach__7A672E12" FromRole="TeachingStrategie" ToRole="LPTeachingStrategie" />
+        </EntityType>
+        <EntityType Name="Week">
+          <Key>
+            <PropertyRef Name="WeekId" />
+          </Key>
+          <Property Name="WeekId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Timeline" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LearningPlans" Relationship="Self.FK__LearningP__WeekI__534D60F1" FromRole="Week" ToRole="LearningPlan" />
+          <NavigationProperty Name="LearningPlans1" Relationship="Self.FK__LearningP__WeekI__7E37BEF6" FromRole="Week" ToRole="LearningPlan" />
+        </EntityType>
+        <Association Name="FK__CourseDet__Asses__03F0984C">
+          <End Role="AssessmentStrategie" Type="Self.AssessmentStrategie" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentStrategie">
+              <PropertyRef Name="AssessmentStrategieId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="AssessmentStrategieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__Asses__59063A47">
+          <End Role="AssessmentStrategie" Type="Self.AssessmentStrategie" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentStrategie">
+              <PropertyRef Name="AssessmentStrategieId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="AssessmentStrategieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LearningP__Asses__46E78A0C">
+          <End Role="AssessmentStrategie" Type="Self.AssessmentStrategie" Multiplicity="0..1" />
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentStrategie">
+              <PropertyRef Name="AssessmentStrategieId" />
+            </Principal>
+            <Dependent Role="LearningPlan">
+              <PropertyRef Name="AssessmentStrategieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LearningP__Asses__71D1E811">
+          <End Role="AssessmentStrategie" Type="Self.AssessmentStrategie" Multiplicity="0..1" />
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentStrategie">
+              <PropertyRef Name="AssessmentStrategieId" />
+            </Principal>
+            <Dependent Role="LearningPlan">
+              <PropertyRef Name="AssessmentStrategieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LPAssessm__Asses__5165187F">
+          <End Role="AssessmentStrategie" Type="Self.AssessmentStrategie" Multiplicity="0..1" />
+          <End Role="LPAssessmentStrategie" Type="Self.LPAssessmentStrategie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentStrategie">
+              <PropertyRef Name="AssessmentStrategieId" />
+            </Principal>
+            <Dependent Role="LPAssessmentStrategie">
+              <PropertyRef Name="AssessmentStrategieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LPAssessm__Asses__7C4F7684">
+          <End Role="AssessmentStrategie" Type="Self.AssessmentStrategie" Multiplicity="0..1" />
+          <End Role="LPAssessmentStrategie" Type="Self.LPAssessmentStrategie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentStrategie">
+              <PropertyRef Name="AssessmentStrategieId" />
+            </Principal>
+            <Dependent Role="LPAssessmentStrategie">
+              <PropertyRef Name="AssessmentStrategieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Book__BookTypeId__45F365D3">
+          <End Role="BookType" Type="Self.BookType" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookType">
+              <PropertyRef Name="BookTypeId" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="BookTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Book__BookTypeId__70DDC3D8">
+          <End Role="BookType" Type="Self.BookType" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookType">
+              <PropertyRef Name="BookTypeId" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="BookTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Book__CourseId__4AB81AF0">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Book__CourseId__75A278F5">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__BookI__07C12930">
+          <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="BookId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="BookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__BookI__5CD6CB2B">
+          <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="BookId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="BookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CIE__CourseId__5441852A">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="CIE" Type="Self.CIE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CIE">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CIE__CourseId__7F2BE32F">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="CIE" Type="Self.CIE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CIE">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__CIEId__05D8E0BE">
+          <End Role="CIE" Type="Self.CIE" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CIE">
+              <PropertyRef Name="CIEId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="CIEId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__CIEId__5AEE82B9">
+          <End Role="CIE" Type="Self.CIE" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CIE">
+              <PropertyRef Name="CIEId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="CIEId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CLO__CourseId__4CA06362">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="CLO" Type="Self.CLO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CLO">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CLO__CourseId__778AC167">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="CLO" Type="Self.CLO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CLO">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__CLOId__02084FDA">
+          <End Role="CLO" Type="Self.CLO" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLO">
+              <PropertyRef Name="CLOId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="CLOId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__CLOId__571DF1D5">
+          <End Role="CLO" Type="Self.CLO" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLO">
+              <PropertyRef Name="CLOId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="CLOId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LearningP__CLOId__48CFD27E">
+          <End Role="CLO" Type="Self.CLO" Multiplicity="0..1" />
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLO">
+              <PropertyRef Name="CLOId" />
+            </Principal>
+            <Dependent Role="LearningPlan">
+              <PropertyRef Name="CLOId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LearningP__CLOId__73BA3083">
+          <End Role="CLO" Type="Self.CLO" Multiplicity="0..1" />
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLO">
+              <PropertyRef Name="CLOId" />
+            </Principal>
+            <Dependent Role="LearningPlan">
+              <PropertyRef Name="CLOId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LPCLO__CLOId__4D94879B">
+          <End Role="CLO" Type="Self.CLO" Multiplicity="0..1" />
+          <End Role="LPCLO" Type="Self.LPCLO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLO">
+              <PropertyRef Name="CLOId" />
+            </Principal>
+            <Dependent Role="LPCLO">
+              <PropertyRef Name="CLOId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LPCLO__CLOId__787EE5A0">
+          <End Role="CLO" Type="Self.CLO" Multiplicity="0..1" />
+          <End Role="LPCLO" Type="Self.LPCLO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLO">
+              <PropertyRef Name="CLOId" />
+            </Principal>
+            <Dependent Role="LPCLO">
+              <PropertyRef Name="CLOId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Course__CourseTy__4316F928">
+          <End Role="CourseType" Type="Self.CourseType" Multiplicity="0..1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseType">
+              <PropertyRef Name="CourseTypeId" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="CourseTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Course__CourseTy__6E01572D">
+          <End Role="CourseType" Type="Self.CourseType" Multiplicity="0..1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseType">
+              <PropertyRef Name="CourseTypeId" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="CourseTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Course__MarksId__440B1D61">
+          <End Role="Marks" Type="Self.Mark" Multiplicity="0..1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marks">
+              <PropertyRef Name="MarksId" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="MarksId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Course__MarksId__6EF57B66">
+          <End Role="Marks" Type="Self.Mark" Multiplicity="0..1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marks">
+              <PropertyRef Name="MarksId" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="MarksId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__Cours__49C3F6B7">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__Cours__74AE54BC">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseObj__Cours__4BAC3F29">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="CourseObjective" Type="Self.CourseObjective" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CourseObjective">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseObj__Cours__76969D2E">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="CourseObjective" Type="Self.CourseObjective" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CourseObjective">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SEE__CourseId__00200768">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="SEE" Type="Self.SEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="SEE">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SEE__CourseId__5535A963">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="SEE" Type="Self.SEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="SEE">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__Cours__01142BA1">
+          <End Role="CourseObjective" Type="Self.CourseObjective" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseObjective">
+              <PropertyRef Name="CourseObjectiveId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="CourseObjectiveId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__Cours__5629CD9C">
+          <End Role="CourseObjective" Type="Self.CourseObjective" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseObjective">
+              <PropertyRef Name="CourseObjectiveId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="CourseObjectiveId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__PlanI__02FC7413">
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LearningPlan">
+              <PropertyRef Name="PlanId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="PlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__PlanI__5812160E">
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LearningPlan">
+              <PropertyRef Name="PlanId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="PlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__SEEId__06CD04F7">
+          <End Role="SEE" Type="Self.SEE" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEE">
+              <PropertyRef Name="SEEId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="SEEId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__SEEId__5BE2A6F2">
+          <End Role="SEE" Type="Self.SEE" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEE">
+              <PropertyRef Name="SEEId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="SEEId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__Teach__04E4BC85">
+          <End Role="TeachingStrategie" Type="Self.TeachingStrategie" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeachingStrategie">
+              <PropertyRef Name="TeachingStrategieId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="TeachingStrategieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CourseDet__Teach__59FA5E80">
+          <End Role="TeachingStrategie" Type="Self.TeachingStrategie" Multiplicity="0..1" />
+          <End Role="CourseDetail" Type="Self.CourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeachingStrategie">
+              <PropertyRef Name="TeachingStrategieId" />
+            </Principal>
+            <Dependent Role="CourseDetail">
+              <PropertyRef Name="TeachingStrategieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Marks__CourseTyp__44FF419A">
+          <End Role="CourseType" Type="Self.CourseType" Multiplicity="0..1" />
+          <End Role="Marks" Type="Self.Mark" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseType">
+              <PropertyRef Name="CourseTypeId" />
+            </Principal>
+            <Dependent Role="Marks">
+              <PropertyRef Name="CourseTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Marks__CourseTyp__6FE99F9F">
+          <End Role="CourseType" Type="Self.CourseType" Multiplicity="0..1" />
+          <End Role="Marks" Type="Self.Mark" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseType">
+              <PropertyRef Name="CourseTypeId" />
+            </Principal>
+            <Dependent Role="Marks">
+              <PropertyRef Name="CourseTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LearningP__Teach__47DBAE45">
+          <End Role="TeachingStrategie" Type="Self.TeachingStrategie" Multiplicity="0..1" />
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeachingStrategie">
+              <PropertyRef Name="TeachingStrategieId" />
+            </Principal>
+            <Dependent Role="LearningPlan">
+              <PropertyRef Name="TeachingStrategieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LearningP__Teach__72C60C4A">
+          <End Role="TeachingStrategie" Type="Self.TeachingStrategie" Multiplicity="0..1" />
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeachingStrategie">
+              <PropertyRef Name="TeachingStrategieId" />
+            </Principal>
+            <Dependent Role="LearningPlan">
+              <PropertyRef Name="TeachingStrategieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LearningP__WeekI__534D60F1">
+          <End Role="Week" Type="Self.Week" Multiplicity="0..1" />
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Week">
+              <PropertyRef Name="WeekId" />
+            </Principal>
+            <Dependent Role="LearningPlan">
+              <PropertyRef Name="WeekId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LearningP__WeekI__7E37BEF6">
+          <End Role="Week" Type="Self.Week" Multiplicity="0..1" />
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Week">
+              <PropertyRef Name="WeekId" />
+            </Principal>
+            <Dependent Role="LearningPlan">
+              <PropertyRef Name="WeekId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LPAssessm__PlanI__52593CB8">
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="0..1" />
+          <End Role="LPAssessmentStrategie" Type="Self.LPAssessmentStrategie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LearningPlan">
+              <PropertyRef Name="PlanId" />
+            </Principal>
+            <Dependent Role="LPAssessmentStrategie">
+              <PropertyRef Name="PlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LPAssessm__PlanI__7D439ABD">
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="0..1" />
+          <End Role="LPAssessmentStrategie" Type="Self.LPAssessmentStrategie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LearningPlan">
+              <PropertyRef Name="PlanId" />
+            </Principal>
+            <Dependent Role="LPAssessmentStrategie">
+              <PropertyRef Name="PlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LPCLO__PlanId__4E88ABD4">
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="0..1" />
+          <End Role="LPCLO" Type="Self.LPCLO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LearningPlan">
+              <PropertyRef Name="PlanId" />
+            </Principal>
+            <Dependent Role="LPCLO">
+              <PropertyRef Name="PlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LPCLO__PlanId__797309D9">
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="0..1" />
+          <End Role="LPCLO" Type="Self.LPCLO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LearningPlan">
+              <PropertyRef Name="PlanId" />
+            </Principal>
+            <Dependent Role="LPCLO">
+              <PropertyRef Name="PlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LPTeachin__PlanI__5070F446">
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="0..1" />
+          <End Role="LPTeachingStrategie" Type="Self.LPTeachingStrategie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LearningPlan">
+              <PropertyRef Name="PlanId" />
+            </Principal>
+            <Dependent Role="LPTeachingStrategie">
+              <PropertyRef Name="PlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LPTeachin__PlanI__7B5B524B">
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="0..1" />
+          <End Role="LPTeachingStrategie" Type="Self.LPTeachingStrategie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LearningPlan">
+              <PropertyRef Name="PlanId" />
+            </Principal>
+            <Dependent Role="LPTeachingStrategie">
+              <PropertyRef Name="PlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LPTeachin__Teach__4F7CD00D">
+          <End Role="TeachingStrategie" Type="Self.TeachingStrategie" Multiplicity="0..1" />
+          <End Role="LPTeachingStrategie" Type="Self.LPTeachingStrategie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeachingStrategie">
+              <PropertyRef Name="TeachingStrategieId" />
+            </Principal>
+            <Dependent Role="LPTeachingStrategie">
+              <PropertyRef Name="TeachingStrategieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LPTeachin__Teach__7A672E12">
+          <End Role="TeachingStrategie" Type="Self.TeachingStrategie" Multiplicity="0..1" />
+          <End Role="LPTeachingStrategie" Type="Self.LPTeachingStrategie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeachingStrategie">
+              <PropertyRef Name="TeachingStrategieId" />
+            </Principal>
+            <Dependent Role="LPTeachingStrategie">
+              <PropertyRef Name="TeachingStrategieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SyllabusMakerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AssessmentStrategies" EntityType="Self.AssessmentStrategie" />
+          <EntitySet Name="Books" EntityType="Self.Book" />
+          <EntitySet Name="BookTypes" EntityType="Self.BookType" />
+          <EntitySet Name="CIEs" EntityType="Self.CIE" />
+          <EntitySet Name="CLOes" EntityType="Self.CLO" />
+          <EntitySet Name="Courses" EntityType="Self.Course" />
+          <EntitySet Name="CourseDetails" EntityType="Self.CourseDetail" />
+          <EntitySet Name="CourseObjectives" EntityType="Self.CourseObjective" />
+          <EntitySet Name="CourseTypes" EntityType="Self.CourseType" />
+          <EntitySet Name="LearningPlans" EntityType="Self.LearningPlan" />
+          <EntitySet Name="LPAssessmentStrategies" EntityType="Self.LPAssessmentStrategie" />
+          <EntitySet Name="LPCLOes" EntityType="Self.LPCLO" />
+          <EntitySet Name="LPTeachingStrategies" EntityType="Self.LPTeachingStrategie" />
+          <EntitySet Name="Marks" EntityType="Self.Mark" />
+          <EntitySet Name="SEEs" EntityType="Self.SEE" />
+          <EntitySet Name="TeachingStrategies" EntityType="Self.TeachingStrategie" />
+          <EntitySet Name="Weeks" EntityType="Self.Week" />
+          <AssociationSet Name="FK__CourseDet__Asses__03F0984C" Association="Self.FK__CourseDet__Asses__03F0984C">
+            <End Role="AssessmentStrategie" EntitySet="AssessmentStrategies" />
+            <End Role="CourseDetail" EntitySet="CourseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__Asses__59063A47" Association="Self.FK__CourseDet__Asses__59063A47">
+            <End Role="AssessmentStrategie" EntitySet="AssessmentStrategies" />
+            <End Role="CourseDetail" EntitySet="CourseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LearningP__Asses__46E78A0C" Association="Self.FK__LearningP__Asses__46E78A0C">
+            <End Role="AssessmentStrategie" EntitySet="AssessmentStrategies" />
+            <End Role="LearningPlan" EntitySet="LearningPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LearningP__Asses__71D1E811" Association="Self.FK__LearningP__Asses__71D1E811">
+            <End Role="AssessmentStrategie" EntitySet="AssessmentStrategies" />
+            <End Role="LearningPlan" EntitySet="LearningPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LPAssessm__Asses__5165187F" Association="Self.FK__LPAssessm__Asses__5165187F">
+            <End Role="AssessmentStrategie" EntitySet="AssessmentStrategies" />
+            <End Role="LPAssessmentStrategie" EntitySet="LPAssessmentStrategies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LPAssessm__Asses__7C4F7684" Association="Self.FK__LPAssessm__Asses__7C4F7684">
+            <End Role="AssessmentStrategie" EntitySet="AssessmentStrategies" />
+            <End Role="LPAssessmentStrategie" EntitySet="LPAssessmentStrategies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Book__BookTypeId__45F365D3" Association="Self.FK__Book__BookTypeId__45F365D3">
+            <End Role="BookType" EntitySet="BookTypes" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Book__BookTypeId__70DDC3D8" Association="Self.FK__Book__BookTypeId__70DDC3D8">
+            <End Role="BookType" EntitySet="BookTypes" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Book__CourseId__4AB81AF0" Association="Self.FK__Book__CourseId__4AB81AF0">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Book__CourseId__75A278F5" Association="Self.FK__Book__CourseId__75A278F5">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__BookI__07C12930" Association="Self.FK__CourseDet__BookI__07C12930">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="CourseDetail" EntitySet="CourseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__BookI__5CD6CB2B" Association="Self.FK__CourseDet__BookI__5CD6CB2B">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="CourseDetail" EntitySet="CourseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CIE__CourseId__5441852A" Association="Self.FK__CIE__CourseId__5441852A">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="CIE" EntitySet="CIEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CIE__CourseId__7F2BE32F" Association="Self.FK__CIE__CourseId__7F2BE32F">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="CIE" EntitySet="CIEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__CIEId__05D8E0BE" Association="Self.FK__CourseDet__CIEId__05D8E0BE">
+            <End Role="CIE" EntitySet="CIEs" />
+            <End Role="CourseDetail" EntitySet="CourseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__CIEId__5AEE82B9" Association="Self.FK__CourseDet__CIEId__5AEE82B9">
+            <End Role="CIE" EntitySet="CIEs" />
+            <End Role="CourseDetail" EntitySet="CourseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CLO__CourseId__4CA06362" Association="Self.FK__CLO__CourseId__4CA06362">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="CLO" EntitySet="CLOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CLO__CourseId__778AC167" Association="Self.FK__CLO__CourseId__778AC167">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="CLO" EntitySet="CLOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__CLOId__02084FDA" Association="Self.FK__CourseDet__CLOId__02084FDA">
+            <End Role="CLO" EntitySet="CLOes" />
+            <End Role="CourseDetail" EntitySet="CourseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__CLOId__571DF1D5" Association="Self.FK__CourseDet__CLOId__571DF1D5">
+            <End Role="CLO" EntitySet="CLOes" />
+            <End Role="CourseDetail" EntitySet="CourseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LearningP__CLOId__48CFD27E" Association="Self.FK__LearningP__CLOId__48CFD27E">
+            <End Role="CLO" EntitySet="CLOes" />
+            <End Role="LearningPlan" EntitySet="LearningPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LearningP__CLOId__73BA3083" Association="Self.FK__LearningP__CLOId__73BA3083">
+            <End Role="CLO" EntitySet="CLOes" />
+            <End Role="LearningPlan" EntitySet="LearningPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LPCLO__CLOId__4D94879B" Association="Self.FK__LPCLO__CLOId__4D94879B">
+            <End Role="CLO" EntitySet="CLOes" />
+            <End Role="LPCLO" EntitySet="LPCLOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LPCLO__CLOId__787EE5A0" Association="Self.FK__LPCLO__CLOId__787EE5A0">
+            <End Role="CLO" EntitySet="CLOes" />
+            <End Role="LPCLO" EntitySet="LPCLOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Course__CourseTy__4316F928" Association="Self.FK__Course__CourseTy__4316F928">
+            <End Role="CourseType" EntitySet="CourseTypes" />
+            <End Role="Course" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Course__CourseTy__6E01572D" Association="Self.FK__Course__CourseTy__6E01572D">
+            <End Role="CourseType" EntitySet="CourseTypes" />
+            <End Role="Course" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Course__MarksId__440B1D61" Association="Self.FK__Course__MarksId__440B1D61">
+            <End Role="Marks" EntitySet="Marks" />
+            <End Role="Course" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Course__MarksId__6EF57B66" Association="Self.FK__Course__MarksId__6EF57B66">
+            <End Role="Marks" EntitySet="Marks" />
+            <End Role="Course" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__Cours__49C3F6B7" Association="Self.FK__CourseDet__Cours__49C3F6B7">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="CourseDetail" EntitySet="CourseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__Cours__74AE54BC" Association="Self.FK__CourseDet__Cours__74AE54BC">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="CourseDetail" EntitySet="CourseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseObj__Cours__4BAC3F29" Association="Self.FK__CourseObj__Cours__4BAC3F29">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="CourseObjective" EntitySet="CourseObjectives" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseObj__Cours__76969D2E" Association="Self.FK__CourseObj__Cours__76969D2E">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="CourseObjective" EntitySet="CourseObjectives" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SEE__CourseId__00200768" Association="Self.FK__SEE__CourseId__00200768">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="SEE" EntitySet="SEEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SEE__CourseId__5535A963" Association="Self.FK__SEE__CourseId__5535A963">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="SEE" EntitySet="SEEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__Cours__01142BA1" Association="Self.FK__CourseDet__Cours__01142BA1">
+            <End Role="CourseObjective" EntitySet="CourseObjectives" />
+            <End Role="CourseDetail" EntitySet="CourseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__Cours__5629CD9C" Association="Self.FK__CourseDet__Cours__5629CD9C">
+            <End Role="CourseObjective" EntitySet="CourseObjectives" />
+            <End Role="CourseDetail" EntitySet="CourseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__PlanI__02FC7413" Association="Self.FK__CourseDet__PlanI__02FC7413">
+            <End Role="LearningPlan" EntitySet="LearningPlans" />
+            <End Role="CourseDetail" EntitySet="CourseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__PlanI__5812160E" Association="Self.FK__CourseDet__PlanI__5812160E">
+            <End Role="LearningPlan" EntitySet="LearningPlans" />
+            <End Role="CourseDetail" EntitySet="CourseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__SEEId__06CD04F7" Association="Self.FK__CourseDet__SEEId__06CD04F7">
+            <End Role="SEE" EntitySet="SEEs" />
+            <End Role="CourseDetail" EntitySet="CourseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__SEEId__5BE2A6F2" Association="Self.FK__CourseDet__SEEId__5BE2A6F2">
+            <End Role="SEE" EntitySet="SEEs" />
+            <End Role="CourseDetail" EntitySet="CourseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__Teach__04E4BC85" Association="Self.FK__CourseDet__Teach__04E4BC85">
+            <End Role="TeachingStrategie" EntitySet="TeachingStrategies" />
+            <End Role="CourseDetail" EntitySet="CourseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CourseDet__Teach__59FA5E80" Association="Self.FK__CourseDet__Teach__59FA5E80">
+            <End Role="TeachingStrategie" EntitySet="TeachingStrategies" />
+            <End Role="CourseDetail" EntitySet="CourseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Marks__CourseTyp__44FF419A" Association="Self.FK__Marks__CourseTyp__44FF419A">
+            <End Role="CourseType" EntitySet="CourseTypes" />
+            <End Role="Marks" EntitySet="Marks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Marks__CourseTyp__6FE99F9F" Association="Self.FK__Marks__CourseTyp__6FE99F9F">
+            <End Role="CourseType" EntitySet="CourseTypes" />
+            <End Role="Marks" EntitySet="Marks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LearningP__Teach__47DBAE45" Association="Self.FK__LearningP__Teach__47DBAE45">
+            <End Role="TeachingStrategie" EntitySet="TeachingStrategies" />
+            <End Role="LearningPlan" EntitySet="LearningPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LearningP__Teach__72C60C4A" Association="Self.FK__LearningP__Teach__72C60C4A">
+            <End Role="TeachingStrategie" EntitySet="TeachingStrategies" />
+            <End Role="LearningPlan" EntitySet="LearningPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LearningP__WeekI__534D60F1" Association="Self.FK__LearningP__WeekI__534D60F1">
+            <End Role="Week" EntitySet="Weeks" />
+            <End Role="LearningPlan" EntitySet="LearningPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LearningP__WeekI__7E37BEF6" Association="Self.FK__LearningP__WeekI__7E37BEF6">
+            <End Role="Week" EntitySet="Weeks" />
+            <End Role="LearningPlan" EntitySet="LearningPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LPAssessm__PlanI__52593CB8" Association="Self.FK__LPAssessm__PlanI__52593CB8">
+            <End Role="LearningPlan" EntitySet="LearningPlans" />
+            <End Role="LPAssessmentStrategie" EntitySet="LPAssessmentStrategies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LPAssessm__PlanI__7D439ABD" Association="Self.FK__LPAssessm__PlanI__7D439ABD">
+            <End Role="LearningPlan" EntitySet="LearningPlans" />
+            <End Role="LPAssessmentStrategie" EntitySet="LPAssessmentStrategies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LPCLO__PlanId__4E88ABD4" Association="Self.FK__LPCLO__PlanId__4E88ABD4">
+            <End Role="LearningPlan" EntitySet="LearningPlans" />
+            <End Role="LPCLO" EntitySet="LPCLOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LPCLO__PlanId__797309D9" Association="Self.FK__LPCLO__PlanId__797309D9">
+            <End Role="LearningPlan" EntitySet="LearningPlans" />
+            <End Role="LPCLO" EntitySet="LPCLOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LPTeachin__PlanI__5070F446" Association="Self.FK__LPTeachin__PlanI__5070F446">
+            <End Role="LearningPlan" EntitySet="LearningPlans" />
+            <End Role="LPTeachingStrategie" EntitySet="LPTeachingStrategies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LPTeachin__PlanI__7B5B524B" Association="Self.FK__LPTeachin__PlanI__7B5B524B">
+            <End Role="LearningPlan" EntitySet="LearningPlans" />
+            <End Role="LPTeachingStrategie" EntitySet="LPTeachingStrategies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LPTeachin__Teach__4F7CD00D" Association="Self.FK__LPTeachin__Teach__4F7CD00D">
+            <End Role="TeachingStrategie" EntitySet="TeachingStrategies" />
+            <End Role="LPTeachingStrategie" EntitySet="LPTeachingStrategies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LPTeachin__Teach__7A672E12" Association="Self.FK__LPTeachin__Teach__7A672E12">
+            <End Role="TeachingStrategie" EntitySet="TeachingStrategies" />
+            <End Role="LPTeachingStrategie" EntitySet="LPTeachingStrategies" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SyllabusGenaratorModelStoreContainer" CdmEntityContainer="SyllabusMakerEntities">
+          <EntitySetMapping Name="AssessmentStrategies">
+            <EntityTypeMapping TypeName="SyllabusGenaratorModel.AssessmentStrategie">
+              <MappingFragment StoreEntitySet="AssessmentStrategie">
+                <ScalarProperty Name="AssessmentStrategieId" ColumnName="AssessmentStrategieId" />
+                <ScalarProperty Name="Strategies" ColumnName="Strategies" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="SyllabusGenaratorModel.Book">
+              <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+                <ScalarProperty Name="BookTypeId" ColumnName="BookTypeId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookTypes">
+            <EntityTypeMapping TypeName="SyllabusGenaratorModel.BookType">
+              <MappingFragment StoreEntitySet="BookType">
+                <ScalarProperty Name="BookTypeId" ColumnName="BookTypeId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CIEs">
+            <EntityTypeMapping TypeName="SyllabusGenaratorModel.CIE">
+              <MappingFragment StoreEntitySet="CIE">
+                <ScalarProperty Name="CIEId" ColumnName="CIEId" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Test" ColumnName="Test" />
+                <ScalarProperty Name="Assignment" ColumnName="Assignment" />
+                <ScalarProperty Name="Quizzes" ColumnName="Quizzes" />
+                <ScalarProperty Name="CCA" ColumnName="CCA" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLOes">
+            <EntityTypeMapping TypeName="SyllabusGenaratorModel.CLO">
+              <MappingFragment StoreEntitySet="CLO">
+                <ScalarProperty Name="CLOId" ColumnName="CLOId" />
+                <ScalarProperty Name="Outcomes" ColumnName="Outcomes" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="SyllabusGenaratorModel.Course">
+              <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="CourseCode" ColumnName="CourseCode" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CourseTypeId" ColumnName="CourseTypeId" />
+                <ScalarProperty Name="TotalCredit" ColumnName="TotalCredit" />
+                <ScalarProperty Name="MarksId" ColumnName="MarksId" />
+                <ScalarProperty Name="TotalMarks" ColumnName="TotalMarks" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseDetails">
+            <EntityTypeMapping TypeName="SyllabusGenaratorModel.CourseDetail">
+              <MappingFragment StoreEntitySet="CourseDetail">
+                <ScalarProperty Name="CourseDetailId" ColumnName="CourseDetailId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="CourseObjectiveId" ColumnName="CourseObjectiveId" />
+                <ScalarProperty Name="CLOId" ColumnName="CLOId" />
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+                <ScalarProperty Name="AssessmentStrategieId" ColumnName="AssessmentStrategieId" />
+                <ScalarProperty Name="TeachingStrategieId" ColumnName="TeachingStrategieId" />
+                <ScalarProperty Name="CIEId" ColumnName="CIEId" />
+                <ScalarProperty Name="SEEId" ColumnName="SEEId" />
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseObjectives">
+            <EntityTypeMapping TypeName="SyllabusGenaratorModel.CourseObjective">
+              <MappingFragment StoreEntitySet="CourseObjective">
+                <ScalarProperty Name="CourseObjectiveId" ColumnName="CourseObjectiveId" />
+                <ScalarProperty Name="Objectives" ColumnName="Objectives" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseTypes">
+            <EntityTypeMapping TypeName="SyllabusGenaratorModel.CourseType">
+              <MappingFragment StoreEntitySet="CourseType">
+                <ScalarProperty Name="CourseTypeId" ColumnName="CourseTypeId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LearningPlans">
+            <EntityTypeMapping TypeName="SyllabusGenaratorModel.LearningPlan">
+              <MappingFragment StoreEntitySet="LearningPlan">
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+                <ScalarProperty Name="WeekId" ColumnName="WeekId" />
+                <ScalarProperty Name="Topics" ColumnName="Topics" />
+                <ScalarProperty Name="LearningOutcome" ColumnName="LearningOutcome" />
+                <ScalarProperty Name="TeachingStrategieId" ColumnName="TeachingStrategieId" />
+                <ScalarProperty Name="AssessmentStrategieId" ColumnName="AssessmentStrategieId" />
+                <ScalarProperty Name="CLOId" ColumnName="CLOId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="LPAssessmentStrategieId" ColumnName="LPAssessmentStrategieId" />
+                <ScalarProperty Name="LPTeachingStrategieId" ColumnName="LPTeachingStrategieId" />
+                <ScalarProperty Name="LPCLOId" ColumnName="LPCLOId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LPAssessmentStrategies">
+            <EntityTypeMapping TypeName="SyllabusGenaratorModel.LPAssessmentStrategie">
+              <MappingFragment StoreEntitySet="LPAssessmentStrategie">
+                <ScalarProperty Name="LPAssessmentStrategieId" ColumnName="LPAssessmentStrategieId" />
+                <ScalarProperty Name="AssessmentStrategieId" ColumnName="AssessmentStrategieId" />
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LPCLOes">
+            <EntityTypeMapping TypeName="SyllabusGenaratorModel.LPCLO">
+              <MappingFragment StoreEntitySet="LPCLO">
+                <ScalarProperty Name="LPCLOId" ColumnName="LPCLOId" />
+                <ScalarProperty Name="CLOId" ColumnName="CLOId" />
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LPTeachingStrategies">
+            <EntityTypeMapping TypeName="SyllabusGenaratorModel.LPTeachingStrategie">
+              <MappingFragment StoreEntitySet="LPTeachingStrategie">
+                <ScalarProperty Name="LPTeachingStrategieId" ColumnName="LPTeachingStrategieId" />
+                <ScalarProperty Name="TeachingStrategieId" ColumnName="TeachingStrategieId" />
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marks">
+            <EntityTypeMapping TypeName="SyllabusGenaratorModel.Mark">
+              <MappingFragment StoreEntitySet="Marks">
+                <ScalarProperty Name="MarksId" ColumnName="MarksId" />
+                <ScalarProperty Name="CourseTypeId" ColumnName="CourseTypeId" />
+                <ScalarProperty Name="CT" ColumnName="CT" />
+                <ScalarProperty Name="Attendence" ColumnName="Attendence" />
+                <ScalarProperty Name="SEE" ColumnName="SEE" />
+                <ScalarProperty Name="SE" ColumnName="SE" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEEs">
+            <EntityTypeMapping TypeName="SyllabusGenaratorModel.SEE">
+              <MappingFragment StoreEntitySet="SEE">
+                <ScalarProperty Name="SEEId" ColumnName="SEEId" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Test" ColumnName="Test" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeachingStrategies">
+            <EntityTypeMapping TypeName="SyllabusGenaratorModel.TeachingStrategie">
+              <MappingFragment StoreEntitySet="TeachingStrategie">
+                <ScalarProperty Name="TeachingStrategieId" ColumnName="TeachingStrategieId" />
+                <ScalarProperty Name="Strategies" ColumnName="Strategies" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Weeks">
+            <EntityTypeMapping TypeName="SyllabusGenaratorModel.Week">
+              <MappingFragment StoreEntitySet="Week">
+                <ScalarProperty Name="WeekId" ColumnName="WeekId" />
+                <ScalarProperty Name="Timeline" ColumnName="Timeline" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

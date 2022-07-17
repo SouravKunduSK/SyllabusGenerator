@@ -18,11 +18,10 @@ namespace SyllabusGenerator.Models
         public Nullable<int> CLOId { get; set; }
         public Nullable<int> PlanId { get; set; }
         public Nullable<int> CourseId { get; set; }
-        public string Outcomes { get; set; }
-        public string CLOName { get; set; }
     
         public virtual CLO CLO { get; set; }
-        public virtual Course Course { get; set; }
+        public virtual CLO CLO1 { get; set; }
         public virtual LearningPlan LearningPlan { get; set; }
+        public virtual LearningPlan LearningPlan1 { get; set; }
     }
 }

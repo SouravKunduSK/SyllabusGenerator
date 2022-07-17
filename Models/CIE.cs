@@ -14,6 +14,13 @@ namespace SyllabusGenerator.Models
     
     public partial class CIE
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CIE()
+        {
+            this.CourseDetails = new HashSet<CourseDetail>();
+            this.CourseDetails1 = new HashSet<CourseDetail>();
+        }
+    
         public int CIEId { get; set; }
         public string Category { get; set; }
         public string Test { get; set; }
@@ -21,5 +28,12 @@ namespace SyllabusGenerator.Models
         public string Quizzes { get; set; }
         public string CCA { get; set; }
         public Nullable<int> CourseId { get; set; }
+    
+        public virtual Course Course { get; set; }
+        public virtual Course Course1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CourseDetail> CourseDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CourseDetail> CourseDetails1 { get; set; }
     }
 }

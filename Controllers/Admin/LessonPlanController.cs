@@ -32,13 +32,14 @@ namespace SyllabusMaker.Controllers.Admin
 
             var p = db.LearningPlans.Find(id);
             var ci = db.LearningPlans.Where(x => x.CourseId == id).ToList();
-            var pi = ci.Where(x => x.PlanId == p.PlanId).ToList();
-            ViewBag.pi = pi;
+           // var pi = ci.Where(x => x.PlanId == p.PlanId).ToList();
+          //  ViewBag.pi = pi;
             ViewBag.ci = ci;
-            LessonPlan lp = new LessonPlan();
-            var q = db.LessonPlans.Where(x => x.CourseId == id).ToList();
+            //LessonPlan lp = new LessonPlan();
+            //var q = db.LessonPlans.Where(x => x.CourseId == id).ToList();
             Session["courseId"] = id;
-            return View(pi);
+          //  return View(pi);
+          return View();
         }
 
         public ActionResult Create()

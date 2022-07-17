@@ -25,6 +25,23 @@ namespace SyllabusGenerator.Models
         public Nullable<int> SEEId { get; set; }
         public Nullable<int> BookId { get; set; }
     
+        public virtual AssessmentStrategie AssessmentStrategie { get; set; }
+        public virtual AssessmentStrategie AssessmentStrategie1 { get; set; }
+        public virtual Book Book { get; set; }
+        public virtual Book Book1 { get; set; }
+        public virtual CIE CIE { get; set; }
+        public virtual CIE CIE1 { get; set; }
+        public virtual CLO CLO { get; set; }
+        public virtual CLO CLO1 { get; set; }
         public virtual Course Course { get; set; }
+        public virtual Course Course1 { get; set; }
+        public virtual CourseObjective CourseObjective { get; set; }
+        public virtual CourseObjective CourseObjective1 { get; set; }
+        public virtual LearningPlan LearningPlan { get; set; }
+        public virtual LearningPlan LearningPlan1 { get; set; }
+        public virtual SEE SEE { get; set; }
+        public virtual SEE SEE1 { get; set; }
+        public virtual TeachingStrategie TeachingStrategie { get; set; }
+        public virtual TeachingStrategie TeachingStrategie1 { get; set; }
     }
 }

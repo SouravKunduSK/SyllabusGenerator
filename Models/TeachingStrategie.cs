@@ -17,13 +17,28 @@ namespace SyllabusGenerator.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TeachingStrategie()
         {
+            this.CourseDetails = new HashSet<CourseDetail>();
+            this.CourseDetails1 = new HashSet<CourseDetail>();
+            this.LearningPlans = new HashSet<LearningPlan>();
+            this.LearningPlans1 = new HashSet<LearningPlan>();
             this.LPTeachingStrategies = new HashSet<LPTeachingStrategie>();
+            this.LPTeachingStrategies1 = new HashSet<LPTeachingStrategie>();
         }
     
         public int TeachingStrategieId { get; set; }
         public string Strategies { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CourseDetail> CourseDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CourseDetail> CourseDetails1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LearningPlan> LearningPlans { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LearningPlan> LearningPlans1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LPTeachingStrategie> LPTeachingStrategies { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LPTeachingStrategie> LPTeachingStrategies1 { get; set; }
     }
 }

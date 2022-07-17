@@ -18,10 +18,10 @@ namespace SyllabusGenerator.Models
         public Nullable<int> TeachingStrategieId { get; set; }
         public Nullable<int> PlanId { get; set; }
         public Nullable<int> CourseId { get; set; }
-        public string Strategies { get; set; }
     
-        public virtual Course Course { get; set; }
         public virtual LearningPlan LearningPlan { get; set; }
+        public virtual LearningPlan LearningPlan1 { get; set; }
         public virtual TeachingStrategie TeachingStrategie { get; set; }
+        public virtual TeachingStrategie TeachingStrategie1 { get; set; }
     }
 }

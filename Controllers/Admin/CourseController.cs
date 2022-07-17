@@ -34,11 +34,11 @@ namespace SyllabusGenerator.Controllers.Admin
            
                 if (c.CourseTypeId == 1)
                 {
-                    c.MarksId = 1;
+                    c.MarksId = 5;
                 }
                 else
                 {
-                    c.MarksId = 2;
+                    c.MarksId = 6;
                 }
                 db.Courses.Add(c);
                 db.SaveChanges();

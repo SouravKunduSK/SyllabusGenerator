@@ -42,6 +42,5 @@ namespace SyllabusGenerator.Models
         public virtual DbSet<SEE> SEEs { get; set; }
         public virtual DbSet<TeachingStrategie> TeachingStrategies { get; set; }
         public virtual DbSet<Week> Weeks { get; set; }
-        public virtual DbSet<LessonPlan> LessonPlans { get; set; }
     }
 }

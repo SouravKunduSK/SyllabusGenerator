@@ -18,6 +18,7 @@ namespace SyllabusGenerator.Models
         public BookType()
         {
             this.Books = new HashSet<Book>();
+            this.Books1 = new HashSet<Book>();
         }
     
         public int BookTypeId { get; set; }
@@ -25,5 +26,7 @@ namespace SyllabusGenerator.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Book> Books { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Book> Books1 { get; set; }
     }
 }

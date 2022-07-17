@@ -18,6 +18,7 @@ namespace SyllabusGenerator.Models
         public Mark()
         {
             this.Courses = new HashSet<Course>();
+            this.Courses1 = new HashSet<Course>();
         }
     
         public int MarksId { get; set; }
@@ -30,5 +31,9 @@ namespace SyllabusGenerator.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Course> Courses { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Course> Courses1 { get; set; }
+        public virtual CourseType CourseType { get; set; }
+        public virtual CourseType CourseType1 { get; set; }
     }
 }

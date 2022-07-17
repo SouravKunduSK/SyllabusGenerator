@@ -17,7 +17,12 @@ namespace SyllabusGenerator.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public AssessmentStrategie()
         {
+            this.CourseDetails = new HashSet<CourseDetail>();
+            this.CourseDetails1 = new HashSet<CourseDetail>();
+            this.LearningPlans = new HashSet<LearningPlan>();
+            this.LearningPlans1 = new HashSet<LearningPlan>();
             this.LPAssessmentStrategies = new HashSet<LPAssessmentStrategie>();
+            this.LPAssessmentStrategies1 = new HashSet<LPAssessmentStrategie>();
         }
     
         public int AssessmentStrategieId { get; set; }
@@ -25,6 +30,16 @@ namespace SyllabusGenerator.Models
         public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CourseDetail> CourseDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CourseDetail> CourseDetails1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LearningPlan> LearningPlans { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LearningPlan> LearningPlans1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LPAssessmentStrategie> LPAssessmentStrategies { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LPAssessmentStrategie> LPAssessmentStrategies1 { get; set; }
     }
 }
