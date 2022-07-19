@@ -2,6 +2,7 @@
 using SyllabusGenerator.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -28,27 +29,35 @@ namespace SyllabusMaker.Controllers.Admin
             db.SaveChanges();
             return RedirectToAction ("Index","TeachingStrategie");
         }
-        public ActionResult Edit(int Id)
-
+    
+  
+        public ActionResult Edit(int? id)
         {
-            var std = db.TeachingStrategies.ToList().Where(s => s.TeachingStrategieId == Id).FirstOrDefault();
 
-            
-            return View();
+
+            var query = db.TeachingStrategies.Where(m => m.TeachingStrategieId == id).ToList().FirstOrDefault();
+            return View(query);
+
+
         }
+
         [HttpPost]
-        public ActionResult Edit(TeachingStrategie std)
+        public ActionResult Edit(TeachingStrategie c)
         {
-            var q = db.TeachingStrategies.ToList();
-            var stt = db.TeachingStrategies.ToList().Where(s => s.TeachingStrategieId == std.TeachingStrategieId).FirstOrDefault();
-            q.Remove(stt);
-            q.Add(std);
-            db.SaveChanges();
+            try
+            {
 
-            return RedirectToAction("Index");
+                db.Entry(c).State = EntityState.Modified;
+                db.SaveChanges();
 
+                return RedirectToAction("Index", "TeachingStrategie");
+            }
+            catch (Exception ex)
+            {
+                TempData["msg"] = ex;
+            }
+            return RedirectToAction("Index", "TeachingStrategie");
         }
-
     }
 
 }
