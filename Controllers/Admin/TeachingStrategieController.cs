@@ -58,6 +58,28 @@ namespace SyllabusMaker.Controllers.Admin
             }
             return RedirectToAction("Index", "TeachingStrategie");
         }
+
+
+        public ActionResult Delete(int?id)
+        {
+            try
+            {
+           
+                var query = db.TeachingStrategies.SingleOrDefault(m => m.TeachingStrategieId == id);
+                db.TeachingStrategies.Remove(query);
+                db.SaveChanges();
+                return RedirectToAction("Index", "TeachingStrategie");
+            }
+            catch (Exception ex)
+            {
+                TempData["msg"] = ex;
+            }
+            return RedirectToAction("Index", "TeachingStrategie");
+        }
+
+
+
+
     }
 
 }
