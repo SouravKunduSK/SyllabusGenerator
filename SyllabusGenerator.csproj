@@ -1867,6 +1867,7 @@
     <Content Include="Views\GS\DetailSyllabus.cshtml" />
     <Content Include="Views\TeachingStrategie\Edit.cshtml" />
     <Content Include="Views\AssessmentStrategies\Edit.cshtml" />
+    <Content Include="Views\CourseObjectives\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
